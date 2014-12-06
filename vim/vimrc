@@ -1,5 +1,3 @@
-""" 
-
 " this is for VIM, so let's enable all features
 set nocompatible
 
@@ -15,9 +13,37 @@ call vundle#begin()
 " manage Vundle with Vundle
 Plugin 'gmarik/Vundle.vim'
 
+" Tabbar (multiple files in tabs)
+Plugin 'vim-scripts/TabBar'
+
 call vundle#end()
 " =========================================================
 
 
-" enable syntax highlighting
-syntax on
+" ===== general configuration =============================
+
+syntax on           " enable syntax hightlighting
+set number          " enable line numbers
+set ignorecase      " ignore case while searching
+set title           " show title in console title bar
+set visualbell      " no bell, just blink the screen
+set noautowrite     " thanks, no automatic writing
+set noautowriteall
+set confirm
+set noautoread      " and surely no automatic reading
+set nobackup        " deactivate auto-backup
+set nowb
+set noswapfile      " get rid of this nasty swap files
+" =========================================================
+
+
+" ===== editing ===========================================
+
+set nowrap          " don't wrap lines
+set linebreak       " and surely don't wrap text in the middle of a word
+set expandtab       " use spaces instead of tabs
+set tabstop=4       " <tab> produces 4 spaces
+set shiftwidth=4
+set scrolloff=3     " let some lines...
+set sidescroll=10   " ... and characters be visible while scrolling
+" =========================================================
