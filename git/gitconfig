@@ -1,5 +1,6 @@
 [core]
 	editor = vim
+    autocrlf = input
 
 [user]
 	name = Mischback
@@ -12,7 +13,12 @@
     added = "green normal bold"
     changed = "red normal bold"
     untracked = "magenta normal bold"
-    branch = "cyan normal bold"
+    branch = "yellow normal bold"
+
+[color "branch"]
+    current = "yellow normal bold"
+    local = "green normal dim"
+    remote = "cyan normal dim"
 
 [alias]
 lg = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
