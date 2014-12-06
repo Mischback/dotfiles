@@ -6,6 +6,9 @@
 	name = Mischback
 	email = dev@mischback.de
 
+[merge]
+    ff = false
+
 [color]
 	ui = true
 
