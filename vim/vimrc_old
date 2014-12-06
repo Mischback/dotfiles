@@ -1,0 +1,52 @@
+" load pathogen
+call pathogen#infect()
+
+" TODO: something
+
+" FIXME: blubb
+
+
+""" basic configuration
+set number          " have line numbers visible
+syn on              " activate syntax highlighting
+set ignorecase      " ignore cases while searching
+
+set scrolloff=3     " have some characters visible...
+set sidescroll=10   " ... while scrolling
+
+""" Editing
+set cursorline      " have line to indicate cursor position
+set nowrap          " don't wrap lines
+set linebreak       " don't wrap text in the middle of a word
+set expandtab       " use spaces instead of tabs for autoindent
+set tabstop=4       " <tab> produces 4 spaces
+set shiftwidth=4    " 
+set smarttab
+set autoindent      " always set autoindenting on
+set smartindent
+inoremap # #
+set foldmethod=indent
+set foldlevel=99
+
+set title           " show title in console title bar
+
+set visualbell      " no bell, blink the screen
+
+set noautowrite     " thanks, no automatic writing
+set noautowriteall
+set confirm
+set noautoread      " and surely no automatic reading
+
+
+""" KEYBINDING
+command! W :w       " let me save with 'W'
+map <F2> :NERDTreeToggle<CR>
+map <F3> :Gstatus<CR>
+map <F4> :TlistToggle<CR>
+let g:pep8_map='<F5>'
+
+
+set nobackup        " deactivate auto-backup
+set nowb
+set noswapfile
+
