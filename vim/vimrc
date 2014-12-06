@@ -1,0 +1,23 @@
+""" 
+
+" this is for VIM, so let's enable all features
+set nocompatible
+
+" turn off filetype detection (required by Vundle)
+filetype off
+
+" activate Vundle
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
+
+" ===== Vundle Plugins ====================================
+
+" manage Vundle with Vundle
+Plugin 'gmarik/Vundle.vim'
+
+call vundle#end()
+" =========================================================
+
+
+" enable syntax highlighting
+syntax on
