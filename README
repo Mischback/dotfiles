@@ -6,5 +6,11 @@ $ git clone [URL]
 Fetch submodules
 $ git submodule update --init
 
+Link the dotfiles
+$ cd
+$ ln -s [/path/to/this/repo]/vim/vimfiles .vim
+$ ln -s [/path/to/this/repo]/vim/vimrc .vimrc
+$ ln -s [/path/to/this/repo]/git/gitconfig .gitconfig
+
 Make VIM work
 open vim and issue :PluginInstall
