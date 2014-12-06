@@ -1,0 +1,10 @@
+Usage:
+
+Clone this repository:
+$ git clone [URL]
+
+Fetch submodules
+$ git submodule update --init
+
+Make VIM work
+open vim and issue :PluginInstall
