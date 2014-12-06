@@ -11,10 +11,23 @@ call vundle#begin()
 " ===== Vundle Plugins ====================================
 
 " manage Vundle with Vundle
-Plugin 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle.vim',             { 'name': 'vundle' }
 
 " Tabbar (multiple files in tabs)
-Plugin 'vim-scripts/TabBar'
+Plugin 'vim-scripts/TabBar',            { 'name': 'tabbar' }
+
+" DelimitMate (auto balace brackets, quotes, ...)
+Plugin 'vim-scripts/delimitMate.vim',   { 'name': 'delimitmate' }
+
+" NerdTree (FileExplorer)
+Plugin 'scrooloose/nerdtree',           { 'name': 'nerdtree' }
+
+" Flake8 (PEP8 checks on a file)
+Plugin 'nvie/vim-flake8',               { 'name': 'flake8' }
+
+" Colorschemes
+Plugin 'Mustang2',                      { 'name': 'color-mustang' }
+Plugin 'vim-scripts/cobalt',            { 'name': 'color-cobalt'}
 
 call vundle#end()
 " =========================================================
@@ -34,6 +47,7 @@ set noautoread      " and surely no automatic reading
 set nobackup        " deactivate auto-backup
 set nowb
 set noswapfile      " get rid of this nasty swap files
+color cobalt
 " =========================================================
 
 
@@ -46,4 +60,11 @@ set tabstop=4       " <tab> produces 4 spaces
 set shiftwidth=4
 set scrolloff=3     " let some lines...
 set sidescroll=10   " ... and characters be visible while scrolling
+" =========================================================
+
+
+" =========================================================
+
+command! W :w       " let me save with 'W'
+map <F2> :NERDTreeToggle<CR>
 " =========================================================
