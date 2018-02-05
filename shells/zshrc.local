@@ -1,2 +1,3 @@
 alias gitk='git k'
-alias tree='find -iname "*.pyc" -delete & tree'
+alias tree='find . -iname "*.pyc" -delete && tree'
+alias todo='grep --include=\*.{py,html,js,tex} -rinw . -e "TODO"'
