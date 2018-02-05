@@ -8,10 +8,13 @@ $ git submodule update --init
 
 Link the dotfiles
 $ cd
+$ ln -s [/path/to/this/repo]/git/gitconfig .gitconfig
 $ ln -s [/path/to/this/repo]/vim/vimfiles .vim
 $ ln -s [/path/to/this/repo]/vim/vimrc .vimrc
-$ ln -s [/path/to/this/repo]/git/gitconfig .gitconfig
 $ ln -s [/path/to/this/repo]/shells/zshrc .zshrc
+$ ln -s [/path/to/this/repo]/shells/zshrc.local .zshrc.local
+$ mkdir .ssh
+$ ln -s [/path/to/this/repo]/ssh/config .ssh/config
 
 Make VIM work
 open vim and issue :PluginInstall
