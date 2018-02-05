@@ -2786,5 +2786,3 @@ zrclocal
 # Local variables:
 # mode: sh
 # End:
-
-alias gitk='git log --oneline --graph --decorate --all'

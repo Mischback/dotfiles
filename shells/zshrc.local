@@ -1,0 +1,2 @@
+alias gitk='git k'
+alias tree='find -iname "*.pyc" -delete & tree'
