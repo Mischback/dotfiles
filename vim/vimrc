@@ -1,3 +1,6 @@
+" probably fix for Vundle problems
+set shell=/bin/bash
+
 " this is for VIM, so let's enable all features
 set nocompatible
 
@@ -16,7 +19,7 @@ Plugin 'gmarik/Vundle.vim',             { 'name': 'vundle' }
 " Tabbar (multiple files in tabs)
 Plugin 'vim-scripts/TabBar',            { 'name': 'tabbar' }
 
-" DelimitMate (auto balace brackets, quotes, ...)
+" DelimitMate (auto balance brackets, quotes, ...)
 Plugin 'vim-scripts/delimitMate.vim',   { 'name': 'delimitmate' }
 
 " NerdTree (FileExplorer)
@@ -24,6 +27,9 @@ Plugin 'scrooloose/nerdtree',           { 'name': 'nerdtree' }
 
 " Flake8 (PEP8 checks on a file)
 Plugin 'nvie/vim-flake8',               { 'name': 'flake8' }
+
+" EditorConfig
+Plugin 'editorconfig/editorconfig-vim', { 'name': 'editorconfig' }
 
 " Colorschemes
 Plugin 'Mustang2',                      { 'name': 'color-mustang' }
