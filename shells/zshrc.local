@@ -1,4 +1,4 @@
 alias gitk='git k'
 alias gits='git status'
-alias tree='find . -iname "*.pyc" -delete && find . -type d -iname "*/__pycache__/* -delete" && tree -I ".git"'
+alias tree='find . -iname "*.pyc" -delete && find . -type d -iname "__pycache__" -delete && tree -I ".git"'
 alias todo='grep --include=\*.{py,html,js,tex} -rinw . -e "TODO"'
