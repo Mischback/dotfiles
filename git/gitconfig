@@ -23,6 +23,11 @@
     local = "green normal dim"
     remote = "cyan normal dim"
 
+[color "grep"]
+    linenumber = "green normal dim"
+    filename = "magenta normal dim"
+    match = "red normal bold"
+
 [alias]
 s = status
 m = merge
