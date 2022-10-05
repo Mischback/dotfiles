@@ -17,7 +17,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim',             { 'name': 'vundle' }
 
 " Tabbar (multiple files in tabs)
-Plugin 'vim-scripts/TabBar',            { 'name': 'tabbar' }
+" Plugin 'vim-scripts/TabBar',            { 'name': 'tabbar' }
 
 " DelimitMate (auto balance brackets, quotes, ...)
 Plugin 'vim-scripts/delimitMate.vim',   { 'name': 'delimitmate' }
