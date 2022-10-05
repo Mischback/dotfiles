@@ -25,6 +25,8 @@ Plugin 'vim-scripts/delimitMate.vim',   { 'name': 'delimitmate' }
 " NerdTree (FileExplorer)
 Plugin 'scrooloose/nerdtree',           { 'name': 'nerdtree' }
 
+Plugin 'airblade/vim-gitgutter',        { 'name': 'gitgutter' }
+
 " EditorConfig
 Plugin 'editorconfig/editorconfig-vim', { 'name': 'editorconfig' }
 
