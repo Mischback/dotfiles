@@ -27,7 +27,6 @@ Plugin 'scrooloose/nerdtree',           { 'name': 'nerdtree' }
 
 " EditorConfig
 Plugin 'editorconfig/editorconfig-vim', { 'name': 'editorconfig' }
-let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 
 " Colorschemes
 Plugin 'Mustang2',                      { 'name': 'color-mustang' }
