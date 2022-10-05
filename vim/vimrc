@@ -27,6 +27,8 @@ Plugin 'scrooloose/nerdtree',           { 'name': 'nerdtree' }
 
 Plugin 'airblade/vim-gitgutter',        { 'name': 'gitgutter' }
 
+Plugin 'vim-airline/vim-airline',       { 'name': 'airline' }
+
 " EditorConfig
 Plugin 'editorconfig/editorconfig-vim', { 'name': 'editorconfig' }
 
