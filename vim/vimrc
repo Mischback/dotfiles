@@ -25,9 +25,6 @@ Plugin 'vim-scripts/delimitMate.vim',   { 'name': 'delimitmate' }
 " NerdTree (FileExplorer)
 Plugin 'scrooloose/nerdtree',           { 'name': 'nerdtree' }
 
-" Flake8 (PEP8 checks on a file)
-Plugin 'nvie/vim-flake8',               { 'name': 'flake8' }
-
 " EditorConfig
 Plugin 'editorconfig/editorconfig-vim', { 'name': 'editorconfig' }
 let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
