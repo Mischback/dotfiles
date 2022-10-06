@@ -35,7 +35,7 @@ Plugin 'vim-airline/vim-airline',       { 'name': 'airline' }
 Plugin 'editorconfig/editorconfig-vim', { 'name': 'editorconfig' }
 
 " Colorschemes
-Plugin 'Mustang2',                      { 'name': 'color-mustang' }
+Plugin 'vv9k/vim-github-dark'           { 'name': 'color-ghdark' }
 Plugin 'vim-scripts/cobalt',            { 'name': 'color-cobalt'}
 
 call vundle#end()
@@ -56,7 +56,7 @@ set noautoread      " and surely no automatic reading
 set nobackup        " deactivate auto-backup
 set nowb
 set noswapfile      " get rid of this nasty swap files
-color cobalt
+color ghdark
 " =========================================================
 
 
@@ -73,6 +73,9 @@ set sidescroll=10   " ... and characters be visible while scrolling
 
 
 " ====== plugin settings ==================================
+
+" adjust background color in GitHub dark
+let g:gh_color = "soft"
 
 " GitGutter (color adjustments)
 highlight! link SignColumn LineNr
