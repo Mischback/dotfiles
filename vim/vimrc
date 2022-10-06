@@ -13,7 +13,7 @@ call vundle#begin()
 
 " ===== Vundle Plugins ====================================
 
-" manage Vundle with Vundle
+" Manage Vundle with Vundle
 Plugin 'gmarik/Vundle.vim'
 
 " Auto balance brackets, quotes, ...
@@ -27,6 +27,9 @@ Plugin 'tpope/vim-fugitive'
 
 " Indicate changes in the file (only supporting Git)
 Plugin 'airblade/vim-gitgutter'
+
+" Show indentation guides
+Plugin 'nathanaelkane/vim-indent-guides'
 
 " Enhances status line
 Plugin 'vim-airline/vim-airline'
@@ -58,6 +61,7 @@ set noswapfile      " get rid of this nasty swap files
 
 set t_Co=256        " set colorspace to 256
 color ghdark        " actually apply the colorscheme
+set background=dark " manually override the background
 " =========================================================
 
 
