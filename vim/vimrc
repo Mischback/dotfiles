@@ -35,7 +35,7 @@ Plugin 'vim-airline/vim-airline',       { 'name': 'airline' }
 Plugin 'editorconfig/editorconfig-vim', { 'name': 'editorconfig' }
 
 " Colorschemes
-Plugin 'vv9k/vim-github-dark'           { 'name': 'color-ghdark' }
+Plugin 'vv9k/vim-github-dark',           { 'name': 'color-ghdark' }
 Plugin 'vim-scripts/cobalt',            { 'name': 'color-cobalt'}
 
 call vundle#end()
