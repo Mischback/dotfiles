@@ -75,6 +75,9 @@ set sidescroll=10   " ... and characters be visible while scrolling
 
 " ===== keys ==============================================
 
+let mapleader = ","
+
+nnoremap <Leader>b :buffers<CR>:buffer<Space>
 command! W :w       " let me save with 'W'
 map <F2> :NERDTreeToggle<CR>
 " =========================================================
