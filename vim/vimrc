@@ -14,29 +14,29 @@ call vundle#begin()
 " ===== Vundle Plugins ====================================
 
 " manage Vundle with Vundle
-Plugin 'gmarik/Vundle.vim',             { 'name': 'vundle' }
+Plugin 'gmarik/Vundle.vim'
 
 " Auto balance brackets, quotes, ...
-Plugin 'vim-scripts/delimitMate.vim',   { 'name': 'delimitmate' }
+Plugin 'vim-scripts/delimitMate.vim'
 
 " File explorer
-Plugin 'scrooloose/nerdtree',           { 'name': 'nerdtree' }
+Plugin 'scrooloose/nerdtree'
 
 " General integration of Git
-Plugin 'tpope/vim-fugitive',            { 'name': 'fugitive' }
+Plugin 'tpope/vim-fugitive'
 
 " Indicate changes in the file (only supporting Git)
-Plugin 'airblade/vim-gitgutter',        { 'name': 'gitgutter' }
+Plugin 'airblade/vim-gitgutter'
 
 " Enhances status line
-Plugin 'vim-airline/vim-airline',       { 'name': 'airline' }
+Plugin 'vim-airline/vim-airline'
 
 " Read and apply .editorconfig
-Plugin 'editorconfig/editorconfig-vim', { 'name': 'editorconfig' }
+Plugin 'editorconfig/editorconfig-vim'
 
 " Colorschemes
-Plugin 'vv9k/vim-github-dark',           { 'name': 'color-ghdark' }
-Plugin 'vim-scripts/cobalt',            { 'name': 'color-cobalt'}
+Plugin 'vv9k/vim-github-dark'
+#Plugin 'vim-scripts/cobalt'
 
 call vundle#end()
 " =========================================================
