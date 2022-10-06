@@ -13,10 +13,6 @@ call vundle#begin()
 
 " ===== Vundle Plugins ====================================
 
-" Colorschemes
-Plugin 'vv9k/vim-github-dark'
-"Plugin 'vim-scripts/cobalt'
-
 " manage Vundle with Vundle
 Plugin 'gmarik/Vundle.vim'
 
@@ -37,6 +33,9 @@ Plugin 'vim-airline/vim-airline'
 
 " Read and apply .editorconfig
 Plugin 'editorconfig/editorconfig-vim'
+
+" Colorschemes
+Plugin 'vv9k/vim-github-dark'
 
 call vundle#end()
 " =========================================================
@@ -78,6 +77,9 @@ set sidescroll=10   " ... and characters be visible while scrolling
 
 " adjust background color in GitHub dark
 let g:gh_color = "soft"
+
+" Apply GitHub dark to Airline
+let g:airline_theme="ghdark"
 
 " GitGutter (color adjustments)
 highlight! link SignColumn LineNr
