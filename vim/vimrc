@@ -16,20 +16,19 @@ call vundle#begin()
 " manage Vundle with Vundle
 Plugin 'gmarik/Vundle.vim',             { 'name': 'vundle' }
 
-" Tabbar (multiple files in tabs)
-" Plugin 'vim-scripts/TabBar',            { 'name': 'tabbar' }
-
-" DelimitMate (auto balance brackets, quotes, ...)
+" Auto balance brackets, quotes, ...
 Plugin 'vim-scripts/delimitMate.vim',   { 'name': 'delimitmate' }
 
-" NerdTree (FileExplorer)
+" File explorer
 Plugin 'scrooloose/nerdtree',           { 'name': 'nerdtree' }
 
+" Indicate changes in the file (only supporting Git)
 Plugin 'airblade/vim-gitgutter',        { 'name': 'gitgutter' }
 
+" Enhances status line
 Plugin 'vim-airline/vim-airline',       { 'name': 'airline' }
 
-" EditorConfig
+" Read and apply .editorconfig
 Plugin 'editorconfig/editorconfig-vim', { 'name': 'editorconfig' }
 
 " Colorschemes
@@ -70,7 +69,11 @@ set sidescroll=10   " ... and characters be visible while scrolling
 " =========================================================
 
 
+" ====== plugin settings ==================================
 " =========================================================
+
+
+" ===== keys ==============================================
 
 command! W :w       " let me save with 'W'
 map <F2> :NERDTreeToggle<CR>
