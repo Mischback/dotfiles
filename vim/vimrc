@@ -39,7 +39,6 @@ Plugin 'editorconfig/editorconfig-vim'
 
 " Colorschemes
 Plugin 'vv9k/vim-github-dark'
-Plugin 'bignimbus/pop-punk.vim'
 
 call vundle#end()
 " =========================================================
@@ -61,7 +60,7 @@ set nowb
 set noswapfile      " get rid of this nasty swap files
 
 set t_Co=256        " set colorspace to 256
-colorscheme 'pop-punk'        " actually apply the colorscheme
+colorscheme ghdark  " actually apply the colorscheme
 set background=dark " manually override the background
 " =========================================================
 
