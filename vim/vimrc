@@ -56,7 +56,9 @@ set noautoread      " and surely no automatic reading
 set nobackup        " deactivate auto-backup
 set nowb
 set noswapfile      " get rid of this nasty swap files
-color ghdark
+
+set t_Co=256        " set colorspace to 256
+color ghdark        " actually apply the colorscheme
 " =========================================================
 
 
