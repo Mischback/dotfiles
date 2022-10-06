@@ -36,7 +36,7 @@ Plugin 'editorconfig/editorconfig-vim'
 
 " Colorschemes
 Plugin 'vv9k/vim-github-dark'
-#Plugin 'vim-scripts/cobalt'
+"Plugin 'vim-scripts/cobalt'
 
 call vundle#end()
 " =========================================================
