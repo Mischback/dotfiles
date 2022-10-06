@@ -13,6 +13,10 @@ call vundle#begin()
 
 " ===== Vundle Plugins ====================================
 
+" Colorschemes
+Plugin 'vv9k/vim-github-dark'
+"Plugin 'vim-scripts/cobalt'
+
 " manage Vundle with Vundle
 Plugin 'gmarik/Vundle.vim'
 
@@ -33,10 +37,6 @@ Plugin 'vim-airline/vim-airline'
 
 " Read and apply .editorconfig
 Plugin 'editorconfig/editorconfig-vim'
-
-" Colorschemes
-Plugin 'vv9k/vim-github-dark'
-"Plugin 'vim-scripts/cobalt'
 
 call vundle#end()
 " =========================================================
