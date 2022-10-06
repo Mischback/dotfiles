@@ -73,12 +73,18 @@ set sidescroll=10   " ... and characters be visible while scrolling
 
 
 " ====== plugin settings ==================================
+
+" GitGutter (color adjustments)
+highlight! link SignColumn LineNr
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 " =========================================================
 
 
 " ===== keys ==============================================
 
-let mapleader = ","
+let mapleader = ","  " use , as the leader key
 
 " Provide mappings for buffer management (only available in NORMAL mode)
 nnoremap <Leader>b :buffers<CR>:buffer<Space>
