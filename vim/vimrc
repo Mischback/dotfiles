@@ -102,6 +102,9 @@ nnoremap <Leader>b :buffers<CR>:buffer<Space>
 nnoremap <Leader>v :bprev<CR>
 nnoremap <Leader>n :bnext<CR>
 
+" Mapping for indent-guides plugin
+nnoremap <Leader>g :IndentGuidesToggle<CR>
+
 command! W :w       " let me save with 'W'
 
 map <F2> :NERDTreeToggle<CR>
