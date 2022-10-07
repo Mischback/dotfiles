@@ -75,7 +75,7 @@ set noswapfile      " get rid of this nasty swap files
 
 set t_Co=256        " set colorspace to 256
 set background=dark " manually override the background
-colorscheme dark  " actually apply the colorscheme
+colorscheme edark  " actually apply the colorscheme
 " =========================================================
 
 
@@ -92,12 +92,6 @@ set sidescroll=10   " ... and characters be visible while scrolling
 
 
 " ====== plugin settings ==================================
-
-" adjust background color in GitHub dark
-let g:gh_color = "soft"
-
-" Apply GitHub dark to Airline
-let g:airline_theme="ghdark"
 
 " indent-guides
 let g:indent_guides_start_level=2
