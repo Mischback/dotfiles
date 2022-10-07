@@ -39,23 +39,20 @@ Plugin 'editorconfig/editorconfig-vim'
 
 " Colorschemes
 
-" mimics github's dark style, not optimized for 256
-Plugin 'vv9k/vim-github-dark'
-
 " looks really nice, evaluate in 256
+"
+" - Colors seem a little too tuned down
+" - the primary color (white-ish) is a little to hard in contrast to the backround
+" - Python and Typescript looking good
+" - I don't really like the colors...
 Plugin 'danilo-augusto/vim-afterglow'
 
-" optimized for 256, aims to provide lots of langugage specific styles
-Plugin 'noprompt/lite-brite'
-
 " evaluate for 256, might need color adjustments; some nice features
+"
+" - low contrast between primary color and (linewise) comments
+" - looking good on Python and TypeScript
+" - colors hardcoded, without palette abstraction
 Plugin 'pasela/edark.vim'
-
-" evaluate for 256, might need color adjustments
-Plugin 'd11wtq/subatomic256.vim'
-
-" evaluate for 256, lots of green
-Plugin 'joshdick/onedark.vim'
 
 call vundle#end()
 " =========================================================
@@ -78,7 +75,7 @@ set noswapfile      " get rid of this nasty swap files
 
 set t_Co=256        " set colorspace to 256
 set background=dark " manually override the background
-colorscheme ghdark  " actually apply the colorscheme
+colorscheme dark  " actually apply the colorscheme
 " =========================================================
 
 
