@@ -53,8 +53,44 @@ endfunction
 let s:colors = gsd_colors#GetColors()
 
 " Give the palette a semantic meaning
-let s:bg = s:colors.red
+let s:work = s:colors.pink
+let s:bg_main = s:colors.grey_0
+let s:fg_main = s:colors.grey_10
+let s:bg_main_attention = s:colors.yellow
+let s:fg_main_attention = s:colors.grey_0
+let s:fg_alt = s:colors.grey_5
+let s:fg_dark = s:colors.grey_2
+let s:cursor_fg = s:colors.grey_0
+let s:cursor_bg = s:colors.yellow
+let s:line_active_bg = s:colors.grey_1
+let s:line_active_fg = s:colors.red
 
 
 " Apply the colors to highlight groups
-call s:h("Normal", { "bg": s:bg })
+
+" The overall window (only the lines of the buffer)
+call s:h("Normal", { "fg": s:fg_main, "bg": s:bg_main })
+
+" e.g. '~' and '@' at the end of the window
+call s:h("NonText", { "fg": s:fg_dark })
+
+" Line number
+" This is the static default formatting. For the currently active line see
+" ``CursorLine`` and ``CursorLineNr`` below.
+call s:h("LineNr", { "fg": s:fg_dark })
+
+" Modify the currently active line
+" Must be activated in ``.vimrc`` with ``cursorline``
+call s:h("CursorLine", { "bg": s:line_active_bg })
+call s:h("CursorLineNr", { "fg": s:line_active_fg, "bg": s:line_active_bg })
+
+" The character under the cursor
+" FIXME: Doesn't seem to work, investigate!
+call s:h("Cursor", { "fg": s:cursor_fg, "bg": s:cursor_bg })
+call s:h("ICursor", { "fg": s:cursor_fg, "bg": s:cursor_bg })
+
+" Highlight search results
+" Must be activated in ``.vimrc`` with ``hlsearch``, requires special compile
+" time parameters (``extra_search`` feature).
+call s:h("Search", { "fg": s:fg_main_attention, "bg": s:bg_main_attention })
+call s:h("IncSearch", { "fg": s:fg_main_attention, "bg": s:bg_main_attention })
