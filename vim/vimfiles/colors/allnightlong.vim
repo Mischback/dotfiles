@@ -54,33 +54,49 @@ let s:work = s:colors.pink
 let s:ui_bg = s:colors.grey_1
 let s:ui_fg = s:colors.grey_10
 let s:ui_fg_dark = s:colors.grey_3
+let s:ui_fg_darker = s:colors.grey_2
+let s:ui_fg_darkest = s:colors.grey_0
 let s:ui_hover_bg = s:colors.grey_2
 let s:ui_hover_fg = s:colors.red
 let s:ui_invert_fg = s:colors.grey_1
 let s:ui_invert_bg = s:colors.grey_10
 let s:ui_attention_fg = s:ui_invert_fg
 let s:ui_attention_bg = s:colors.yellow
+let s:ui_attention_bg_cur = s:colors.red
 let s:ui_cursor_bg = s:colors.yellow
 let s:ui_cursor_fg = s:ui_invert_fg
 
 
 " Apply the colors to highlight groups
 
-" The overall window (only the lines of the buffer)
+" The overall window
 call s:h("Normal", { "fg": s:ui_fg, "bg": s:ui_bg })
+call s:h("EndOfBuffer", { "fg": s:ui_fg_darker, "bg": s:ui_bg })
 
 " e.g. '~' and '@' at the end of the window
-call s:h("NonText", { "fg": s:ui_fg_dark })
+" FIXME: Evaluate what other themes do with this!
+call s:h("NonText", { "fg": s:work })
 
 " Line number
 " This is the static default formatting. For the currently active line see
 " ``CursorLine`` and ``CursorLineNr`` below.
+" TODO: Personally I don't use relative line numbers, but it might be desirable
+"       to apply different colors to ``LineNrAbove`` and ``LineNrBelow``.
 call s:h("LineNr", { "fg": s:ui_fg_dark })
+call s:h("LineNrAbove", { "fg": s:ui_fg_dark })
+call s:h("LineNrBelow", { "fg": s:ui_fg_dark })
+
+" Column for *signs*
+" TODO: How to style the actual signs?
+call s:h("SignColumn", { "fg": s:ui_fg_dark, "bg": s:ui_bg })
 
 " Modify the currently active line and column of the cursor
 " Must be activated in ``.vimrc`` with ``cursorline`` / ``cursorcolumn``
+" TODO: Evaluate the fg of ``CursorLineNr`` when the actual gitgutter colors
+"       are applied.
 call s:h("CursorLine", { "bg": s:ui_hover_bg })
 call s:h("CursorLineNr", { "fg": s:ui_hover_fg, "bg": s:ui_hover_bg })
+call s:h("CursorLineSign", { "bg": s:ui_hover_bg })
 call s:h("CursorColumn", { "bg": s:ui_hover_bg })
 
 " Styling the vertical split
