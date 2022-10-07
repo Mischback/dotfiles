@@ -88,6 +88,7 @@ set tabstop=4       " <tab> produces 4 spaces
 set shiftwidth=4
 set scrolloff=3     " let some lines...
 set sidescroll=10   " ... and characters be visible while scrolling
+set cursorline      " highlight the current line
 " =========================================================
 
 

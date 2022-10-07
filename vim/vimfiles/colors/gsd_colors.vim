@@ -84,6 +84,9 @@ call s:h("LineNr", { "fg": s:fg_dark })
 call s:h("CursorLine", { "bg": s:line_active_bg })
 call s:h("CursorLineNr", { "fg": s:line_active_fg, "bg": s:line_active_bg })
 
+" Styling the vertical split
+call s:h("VertSplit", { "fg": s:bg_main, "bg": s:line_active_bg })
+
 " The character under the cursor
 " FIXME: Doesn't seem to work, investigate!
 call s:h("Cursor", { "fg": s:cursor_fg, "bg": s:cursor_bg })
