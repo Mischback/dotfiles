@@ -26,6 +26,6 @@ let s:colors = {
 \}
 
 " Return the color palette
-function! gsd_colors#GetColors()
+function! allnightlong#GetColors()
     return s:colors
 endfunction

@@ -6,9 +6,6 @@
 "
 " The actual code is based on various other colorschemes. The structure is
 " based on https://github.com/joshdick/onedark.vim .
-"
-" **gsd** means *get shit done*, as this colorscheme is intended for highly
-" productive use.
 
 
 " Reset existing highlights
@@ -22,7 +19,7 @@ endif
 set t_Co=256
 
 " Provide the actual name of the colorscheme
-let g:colors_name="gsd"
+let g:colors_name="allnightlong"
 
 
 " Initialize support for italics
@@ -30,8 +27,8 @@ let g:colors_name="gsd"
 " Support for italics is dependent on the terminal in use and the font in
 " this terminal. Support for italics is deactivated by default, but the user
 " may *opt-in* by setting this to ``1`` in his ``.vimrc``.
-if !exists("g:gsd_terminal_italics")
-    let g:gsd_terminal_italics = 0
+if !exists("g:allnightlong_terminal_italics")
+    let g:allnightlong_terminal_italics = 0
 endif
 
 
@@ -50,7 +47,7 @@ endfunction
 
 
 " Fetch the colors
-let s:colors = gsd_colors#GetColors()
+let s:colors = allnightlong#GetColors()
 
 " Give the palette a semantic meaning
 let s:work = s:colors.pink
