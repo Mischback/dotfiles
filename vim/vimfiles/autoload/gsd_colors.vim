@@ -10,9 +10,10 @@
 
 " Define the color palette of the colorscheme.
 let s:colors = {
-    \ "grey_0": { "gui": "#262626", "cterm": "235", "cterm16": "0" },
-    \ "grey_1": { "gui": "#444444", "cterm": "238", "cterm16": "0" },
-    \ "grey_2": { "gui": "#626262", "cterm": "241", "cterm16": "0" },
+    \ "grey_0": { "gui": "#080808", "cterm": "232", "cterm16": "0" },
+    \ "grey_1": { "gui": "#262626", "cterm": "235", "cterm16": "0" },
+    \ "grey_2": { "gui": "#444444", "cterm": "238", "cterm16": "0" },
+    \ "grey_3": { "gui": "#626262", "cterm": "241", "cterm16": "0" },
     \ "grey_5": { "gui": "#767676", "cterm": "243", "cterm16": "8" },
     \ "grey_10": { "gui": "#b2b2b2", "cterm": "249", "cterm16": "7" },
     \ "red": { "gui": "#ff5f00", "cterm": "202", "cterm16": "9" },

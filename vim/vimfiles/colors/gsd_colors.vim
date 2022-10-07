@@ -54,46 +54,46 @@ let s:colors = gsd_colors#GetColors()
 
 " Give the palette a semantic meaning
 let s:work = s:colors.pink
-let s:bg_main = s:colors.grey_0
-let s:fg_main = s:colors.grey_10
-let s:bg_main_attention = s:colors.yellow
-let s:fg_main_attention = s:colors.grey_0
-let s:fg_alt = s:colors.grey_5
-let s:fg_dark = s:colors.grey_2
-let s:cursor_fg = s:colors.grey_0
-let s:cursor_bg = s:colors.yellow
-let s:line_active_bg = s:colors.grey_1
-let s:line_active_fg = s:colors.red
+let s:ui_bg = s:colors.grey_1
+let s:ui_fg = s:colors.grey_10
+let s:ui_fg_dark = s:colors.grey_3
+let s:ui_hover_bg = s:colors.grey_2
+let s:ui_hover_fg = s:colors.red
+let s:ui_invert_fg = s:colors.grey_1
+let s:ui_invert_bg = s:colors.grey_10
+let s:ui_attention_fg = s:ui_invert_fg
+let s:ui_attention_bg = s:colors.yellow
+let s:ui_cursor_bg = s:colors.yellow
+let s:ui_cursor_fg = s:ui_invert_fg
 
 
 " Apply the colors to highlight groups
 
 " The overall window (only the lines of the buffer)
-call s:h("Normal", { "fg": s:fg_main, "bg": s:bg_main })
+call s:h("Normal", { "fg": s:ui_fg, "bg": s:ui_bg })
 
 " e.g. '~' and '@' at the end of the window
-call s:h("NonText", { "fg": s:fg_dark })
+call s:h("NonText", { "fg": s:ui_fg_dark })
 
 " Line number
 " This is the static default formatting. For the currently active line see
 " ``CursorLine`` and ``CursorLineNr`` below.
-call s:h("LineNr", { "fg": s:fg_dark })
+call s:h("LineNr", { "fg": s:ui_fg_dark })
 
 " Modify the currently active line
 " Must be activated in ``.vimrc`` with ``cursorline``
-call s:h("CursorLine", { "bg": s:line_active_bg })
-call s:h("CursorLineNr", { "fg": s:line_active_fg, "bg": s:line_active_bg })
+call s:h("CursorLine", { "bg": s:ui_hover_bg })
+call s:h("CursorLineNr", { "fg": s:ui_hover_fg, "bg": s:ui_hover_bg })
 
 " Styling the vertical split
-call s:h("VertSplit", { "fg": s:bg_main, "bg": s:line_active_bg })
+call s:h("VertSplit", { "fg": s:ui_bg, "bg": s:ui_hover_bg })
 
 " The character under the cursor
 " FIXME: Doesn't seem to work, investigate!
-call s:h("Cursor", { "fg": s:cursor_fg, "bg": s:cursor_bg })
-call s:h("ICursor", { "fg": s:cursor_fg, "bg": s:cursor_bg })
+call s:h("Cursor", { "fg": s:ui_cursor_fg, "bg": s:ui_cursor_bg })
+call s:h("ICursor", { "fg": s:ui_cursor_fg, "bg": s:ui_cursor_bg })
 
 " Highlight search results
-" Must be activated in ``.vimrc`` with ``hlsearch``, requires special compile
-" time parameters (``extra_search`` feature).
-call s:h("Search", { "fg": s:fg_main_attention, "bg": s:bg_main_attention })
-call s:h("IncSearch", { "fg": s:fg_main_attention, "bg": s:bg_main_attention })
+" Must be activated in ``.vimrc`` with ``set hlsearch``.
+call s:h("Search", { "fg": s:ui_attention_fg, "bg": s:ui_attention_bg })
+call s:h("IncSearch", { "fg": s:ui_attention_fg, "bg": s:ui_attention_bg })
