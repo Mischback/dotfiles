@@ -77,10 +77,11 @@ call s:h("NonText", { "fg": s:ui_fg_dark })
 " ``CursorLine`` and ``CursorLineNr`` below.
 call s:h("LineNr", { "fg": s:ui_fg_dark })
 
-" Modify the currently active line
-" Must be activated in ``.vimrc`` with ``cursorline``
+" Modify the currently active line and column of the cursor
+" Must be activated in ``.vimrc`` with ``cursorline`` / ``cursorcolumn``
 call s:h("CursorLine", { "bg": s:ui_hover_bg })
 call s:h("CursorLineNr", { "fg": s:ui_hover_fg, "bg": s:ui_hover_bg })
+call s:h("CursorColumn", { "bg": s:ui_hover_bg })
 
 " Styling the vertical split
 call s:h("VertSplit", { "fg": s:ui_bg, "bg": s:ui_hover_bg })
@@ -94,3 +95,7 @@ call s:h("ICursor", { "fg": s:ui_cursor_fg, "bg": s:ui_cursor_bg })
 " Must be activated in ``.vimrc`` with ``set hlsearch``.
 call s:h("Search", { "fg": s:ui_attention_fg, "bg": s:ui_attention_bg })
 call s:h("IncSearch", { "fg": s:ui_attention_fg, "bg": s:ui_attention_bg })
+
+" Rulers to indicate the line length
+" TODO: Might be switched to a darker color, A contrast required
+call s:h("ColorColumn", { "fg": s:ui_invert_fg, "bg": s:ui_attention_bg })

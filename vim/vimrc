@@ -89,6 +89,7 @@ set shiftwidth=4
 set scrolloff=3     " let some lines...
 set sidescroll=10   " ... and characters be visible while scrolling
 set cursorline      " highlight the current line
+set cursorlineopt=number,screenline
 set hlsearch        " highlight search results
 
 " ``colorcolumn`` let you set visual markers for the line length.
