@@ -50,7 +50,7 @@ endfunction
 
 
 " Fetch the colors
-let s:colors = gsd#GetColors()
+let s:colors = gsd_colors#GetColors()
 
 " Give the palette a semantic meaning
 let s:bg = s:colors.red
