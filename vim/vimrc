@@ -90,6 +90,17 @@ set scrolloff=3     " let some lines...
 set sidescroll=10   " ... and characters be visible while scrolling
 set cursorline      " highlight the current line
 set hlsearch        " highlight search results
+
+" ``colorcolumn`` let you set visual markers for the line length.
+" As this is only relevant while editing, the setting is not applied directly.
+" Instead, it is only shown in ``INSERT`` mode.
+" Use the ``autocmd`` line including ``InsertEnter`` as usual.
+" See https://codeyarns.com/tech/2013-02-07-how-to-show-colorcolumn-only-in-insert-mode-of-vim.html
+augroup ColorColumnInsertMode
+    autocmd!
+    autocmd InsertEnter * setlocal colorcolumn=80
+    autocmd InsertLeave * setlocal colorcolumn=0
+augroup END
 " =========================================================
 
 
