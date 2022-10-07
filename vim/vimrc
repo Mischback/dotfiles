@@ -38,7 +38,24 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'editorconfig/editorconfig-vim'
 
 " Colorschemes
+
+" mimics github's dark style, not optimized for 256
 Plugin 'vv9k/vim-github-dark'
+
+" looks really nice, evaluate in 256
+Plugin 'danilo-augusto/vim-afterglow'
+
+" optimized for 256, aims to provide lots of langugage specific styles
+Plugin 'noprompt/lite-brite'
+
+" evaluate for 256, might need color adjustments; some nice features
+Plugin 'pasela/edark.vim'
+
+" evaluate for 256, might need color adjustments
+Plugin 'd11wtq/subatomic256.vim'
+
+" evaluate for 256, lots of green
+Plugin 'joshdick/onedark.vim'
 
 call vundle#end()
 " =========================================================
@@ -60,8 +77,8 @@ set nowb
 set noswapfile      " get rid of this nasty swap files
 
 set t_Co=256        " set colorspace to 256
-colorscheme ghdark  " actually apply the colorscheme
 set background=dark " manually override the background
+colorscheme ghdark  " actually apply the colorscheme
 " =========================================================
 
 
