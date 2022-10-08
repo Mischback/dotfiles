@@ -66,6 +66,11 @@ let s:ui_attention_bg_cur = s:colors.red
 let s:ui_cursor_bg = s:colors.yellow
 let s:ui_cursor_fg = s:ui_invert_fg
 
+let s:syn_diff_add = s:colors.green
+let s:syn_diff_change = s:colors.yellow
+let s:syn_diff_delete = s:colors.red
+let s:syn_diff_text = s:colors.orange
+
 
 " Apply the colors to highlight groups
 
@@ -87,6 +92,7 @@ call s:h("LineNrAbove", { "fg": s:ui_fg_dark })
 call s:h("LineNrBelow", { "fg": s:ui_fg_dark })
 
 " Column for *signs*
+" E.g. gitgutter uses this column.
 " TODO: How to style the actual signs?
 call s:h("SignColumn", { "fg": s:ui_fg_dark, "bg": s:ui_bg })
 
@@ -96,7 +102,7 @@ call s:h("SignColumn", { "fg": s:ui_fg_dark, "bg": s:ui_bg })
 "       are applied.
 call s:h("CursorLine", { "bg": s:ui_hover_bg })
 call s:h("CursorLineNr", { "fg": s:ui_hover_fg, "bg": s:ui_hover_bg })
-call s:h("CursorLineSign", { "bg": s:ui_hover_bg })
+call s:h("CursorLineSign", { "bg": s:ui_hover_bg })  " FIXME: not working?!
 call s:h("CursorColumn", { "bg": s:ui_hover_bg })
 
 " Styling the vertical split
@@ -115,3 +121,10 @@ call s:h("IncSearch", { "fg": s:ui_attention_fg, "bg": s:ui_attention_bg })
 " Rulers to indicate the line length
 " TODO: Might be switched to a darker color, A contrast required
 call s:h("ColorColumn", { "fg": s:ui_invert_fg, "bg": s:ui_attention_bg })
+
+" Provide colors for Diffs
+" TODO: These do really really pop! Should darker versions be provided?
+call s:h("DiffAdd", { "fg": s:ui_invert_fg, "bg": s:syn_diff_add })
+call s:h("DiffChange", { "fg": s:ui_invert_fg, "bg": s:syn_diff_change })
+call s:h("DiffDelete", { "fg": s:ui_invert_fg, "bg": s:syn_diff_delete })
+call s:h("DiffText", { "fg": s:ui_invert_fg, "bg": s:syn_diff_text })
