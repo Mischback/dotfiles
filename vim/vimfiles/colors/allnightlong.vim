@@ -70,25 +70,6 @@ let s:ui_error = s:colors.red " TODO: This is not red enough!
 
 let s:ui_element_dir = s:colors.blue
 
-let s:syn_comment = s:colors.grey_5
-let s:syn_string = s:colors.green
-let s:syn_constant = s:colors.yellow
-let s:syn_number = s:colors.orange
-let s:syn_statement = s:colors.blue
-let s:syn_identifier = s:colors.red
-let s:syn_import = s:colors.orange
-let s:syn_preproc = s:colors.purple  " FIXME: not the same as statement
-let s:syn_function = s:colors.work_green
-let s:syn_type = s:colors.work_green
-let s:syn_keyword = s:colors.work_green
-let s:syn_special = s:colors.work_green
-let s:syn_error = s:colors.work_green
-
-let s:syn_diff_add = s:colors.green
-let s:syn_diff_change = s:colors.yellow
-let s:syn_diff_delete = s:colors.red
-let s:syn_diff_text = s:colors.orange
-
 
 " Apply the colors to highlight groups
 
@@ -150,10 +131,10 @@ call s:h("ColorColumn", { "fg": s:ui_invert_fg, "bg": s:ui_attention_bg })
 
 " Provide colors for Diffs
 " TODO: These do really really pop! Should darker versions be provided?
-call s:h("DiffAdd", { "fg": s:ui_invert_fg, "bg": s:syn_diff_add })
-call s:h("DiffChange", { "fg": s:ui_invert_fg, "bg": s:syn_diff_change })
-call s:h("DiffDelete", { "fg": s:ui_invert_fg, "bg": s:syn_diff_delete })
-call s:h("DiffText", { "fg": s:ui_invert_fg, "bg": s:syn_diff_text })
+call s:h("DiffAdd", { "fg": s:ui_invert_fg, "bg": s:colors.green })
+call s:h("DiffChange", { "fg": s:ui_invert_fg, "bg": s:colors.yellow })
+call s:h("DiffDelete", { "fg": s:ui_invert_fg, "bg": s:colors.red })
+call s:h("DiffText", { "fg": s:ui_invert_fg, "bg": s:colors.orange })
 
 
 " The default set of syntax-related colors
@@ -172,18 +153,18 @@ call s:h("DiffText", { "fg": s:ui_invert_fg, "bg": s:syn_diff_text })
 " - ``typescriptDocComment`` from ``typescriptcommon.vim``
 " - ``vimComment`` from ``vim.vim``
 " - ``vim9Comment`` from ``vim.vim``
-call s:h("Comment", { "fg": s:syn_comment })  " grey_5
+call s:h("Comment", { "fg": s:colors.grey_5 })
 
 " Constants
 " TODO: Still needs to be done!
 " The following mappings point to ``Constant``
-" - [OVERRIDDEN] ``String`` from ``syncolor.vim``
+" - ``String`` from ``syncolor.vim``
 " - ``Character`` from ``syncolor.vim``
-" - [OVERRIDDEN] ``Number`` from ``syncolor.vim``
-" - [OVERRIDDEN] ``Boolean`` from ``syncolor.vim``
+" - ``Number`` from ``syncolor.vim``
+" - ``Boolean`` from ``syncolor.vim``
 " - ``cConstant`` from ``c.vim``
 " - ``typescriptGlobal`` from ``typescriptcommon.vim``
-call s:h("Constant", { "fg": s:syn_constant })
+call s:h("Constant", { "fg": s:colors.green })
 
 " Strings
 " The following mappings point to ``String``
@@ -205,7 +186,7 @@ call s:h("Constant", { "fg": s:syn_constant })
 " - ``typescriptRegexpString`` from ``typescriptcommon.vim``
 " - ``typescriptStringProperty`` from ``typescriptcommon.vim``
 " - ``vimString`` from ``vim.vim``
-call s:h("String", { "fg": s:syn_string })
+" call s:h("String", { "fg": s:work_1 })
 
 " Numbers
 " The following mappings point to ``Number``
@@ -217,8 +198,26 @@ call s:h("String", { "fg": s:syn_string })
 " - ``vimHiNmbr`` from ``vim.vim``
 " - ``vimMark`` from ``vim.vim``
 " - ``vimNumber`` from ``vim.vim``
-call s:h("Number", { "fg": s:syn_number })
-highlight link Boolean Number
+" call s:h("Number", { "fg": s:work_1 })
+" highlight link Boolean Number
+
+" Identifiers
+" The following mappings point to ``Identifier``
+" - ``htmlEndTag`` from ``html.vim`` (e.g. htmlTagName) FIXME: This needs adjustment (language-specific!)
+" - ``Function`` from ``syncolor.vim``
+" - ``typescriptVariable`` from ``typescriptcommon.vim``
+" - ``typescriptEnumKeyword`` from ``typescriptcommon.vim``
+" - ``typescriptOperator`` from ``typescriptcommon.vim``
+" - ``typescriptKeywordOp`` from ``typescriptcommon.vim``
+" - ``typescriptTypeParameter`` from ``typescriptcommon.vim``
+" - ``typescriptConstructSignature`` from ``typescriptcommon.vim``
+" - ``typescriptAliasDeclaration`` from ``typescriptcommon.vim``
+" - ``typescriptTypeReference`` from ``typescriptcommon.vim``
+" - ``vimFuncVar`` from ``vim.vim``
+" - ``vimSpecFile`` from ``vim.vim``
+" - ``vimVar`` from ``vim.vim``
+call s:h("Identifier", { "fg": s:ui_fg })
+" call s:h("Function", { "fg": s:work_1 })
 
 " Statements
 " The followin mappings point to ``Statement``
@@ -238,24 +237,8 @@ highlight link Boolean Number
 " - ``vimSearchDelim`` from ``vim.vim``
 " - ``vimSetSep`` from ``vim.vim``
 " - ``vimStatement`` from ``vim.vim``
-call s:h("Statement", { "fg": s:syn_statement })  " blue
-
-" Identifiers
-" The following mappings point to ``Identifier``
-" - ``htmlEndTag`` from ``html.vim`` (e.g. htmlTagName) FIXME: This needs adjustment (language-specific!)
-" - [OVERRIDDEN] ``Function`` from ``syncolor.vim``
-" - ``typescriptVariable`` from ``typescriptcommon.vim``
-" - ``typescriptEnumKeyword`` from ``typescriptcommon.vim``
-" - ``typescriptOperator`` from ``typescriptcommon.vim``
-" - ``typescriptKeywordOp`` from ``typescriptcommon.vim``
-" - ``typescriptTypeParameter`` from ``typescriptcommon.vim``
-" - ``typescriptConstructSignature`` from ``typescriptcommon.vim``
-" - ``typescriptAliasDeclaration`` from ``typescriptcommon.vim``
-" - ``typescriptTypeReference`` from ``typescriptcommon.vim``
-" - ``vimFuncVar`` from ``vim.vim``
-" - ``vimSpecFile`` from ``vim.vim``
-" - ``vimVar`` from ``vim.vim``
-call s:h("Identifier", { "fg": s:syn_identifier })  " orange
+call s:h("Statement", { "fg": s:colors.blue })
+" call s:h("Keyword", { "fg": s:work_1 })
 
 " Preprocessor stuff
 " FIXME: Find another color for this!
@@ -281,20 +264,20 @@ call s:h("Identifier", { "fg": s:syn_identifier })  " orange
 " - ``vimHLMod`` from ``vim.vim``
 " - ``vimMenuName`` from ``vim.vim``
 " - ``vimOption`` from ``vim.vim``  " FIXME: Override this!
-call s:h("PreProc", { "fg": s:syn_preproc })
+call s:h("PreProc", { "fg": s:colors.orange })
 
 " Include statements
 " The following mappings point to ``Include``
 " - ``cInclude`` from ``c.vim`` " TODO: Is it really desirable to make the #include statements stand out?
 " - ``pythonInclude`` from ``python.vim``
 " - ``typescriptRef`` from ``typescriptcommon.vim``
-" call s:h("Include", { "fg": s:syn_import })  " orange
+" call s:h("Include", { "fg": s:work_1 })
 
-" call s:h("Function", { "fg": s:syn_function })
-call s:h("Type", { "fg": s:syn_type })
-" call s:h("Keyword", { "fg": s:syn_keyword })
-call s:h("Special", { "fg": s:syn_special })
-call s:h("Error", { "fg": s:syn_error })
+call s:h("Type", { "fg": s:colors.purple })
+
+call s:h("Special", { "fg": s:colors.yellow })
+
+call s:h("Error", { "fg": s:colors.red })
 
 
 " ===== C-specific
