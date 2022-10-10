@@ -126,6 +126,8 @@ call s:h("ICursor", { "fg": s:ui_cursor_fg, "bg": s:ui_cursor_bg })
 " Must be activated in ``.vimrc`` with ``set hlsearch``.
 call s:h("Search", { "fg": s:ui_attention_fg, "bg": s:ui_attention_bg })
 call s:h("IncSearch", { "fg": s:ui_attention_fg, "bg": s:ui_attention_bg })
+" FIXME: This does not seem to work!
+call s:h("CurSearch", { "fg": s:ui_attention_fg, "bg": s:ui_attention_bg_cur })
 
 " Rulers to indicate the line length
 " TODO: Might be switched to a darker color, A contrast required
