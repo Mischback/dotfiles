@@ -50,7 +50,8 @@ endfunction
 let s:colors = allnightlong#GetColors()
 
 " Give the palette a semantic meaning
-let s:work = s:colors.pink
+let s:work_1 = s:colors.work_green
+let s:work_2 = s:colors.work_pink
 let s:ui_bg = s:colors.grey_1
 let s:ui_fg = s:colors.grey_10
 let s:ui_fg_dark = s:colors.grey_3
@@ -69,6 +70,19 @@ let s:ui_error = s:colors.red " TODO: This is not red enough!
 
 let s:ui_element_dir = s:colors.blue
 
+let s:syn_comment = s:colors.grey_5
+let s:syn_string = s:colors.green
+let s:syn_constant = s:colors.work_green
+let s:syn_number = s:colors.work_green
+let s:syn_statement = s:colors.work_green
+let s:syn_identifier = s:colors.work_green
+let s:syn_preproc = s:colors.work_green
+let s:syn_function = s:colors.work_green
+let s:syn_type = s:colors.work_green
+let s:syn_keyword = s:colors.work_green
+let s:syn_special = s:colors.work_green
+let s:syn_error = s:colors.work_green
+
 let s:syn_diff_add = s:colors.green
 let s:syn_diff_change = s:colors.yellow
 let s:syn_diff_delete = s:colors.red
@@ -83,7 +97,7 @@ call s:h("EndOfBuffer", { "fg": s:ui_fg_darker, "bg": s:ui_bg })
 
 " e.g. '~' and '@' at the end of the window
 " FIXME: Evaluate what other themes do with this!
-call s:h("NonText", { "fg": s:work })
+call s:h("NonText", { "fg": s:work_2 })
 
 " Line number
 " This is the static default formatting. For the currently active line see
@@ -139,3 +153,85 @@ call s:h("DiffAdd", { "fg": s:ui_invert_fg, "bg": s:syn_diff_add })
 call s:h("DiffChange", { "fg": s:ui_invert_fg, "bg": s:syn_diff_change })
 call s:h("DiffDelete", { "fg": s:ui_invert_fg, "bg": s:syn_diff_delete })
 call s:h("DiffText", { "fg": s:ui_invert_fg, "bg": s:syn_diff_text })
+
+
+" The default set of syntax-related colors
+
+" Comments
+" The following mappings point to ``Comment``
+" - ``cComment`` from ``c.vim``
+" - ``cCppOut`` from ``c.vim``
+" - ``htmlComment`` from ``html.vim``
+" - ``htmlCommentPart`` from ``html.vim``
+" - ``htmlCssStyleComment`` from ``html.vim``
+" - ``pythonComment`` from ``python.vim``
+" - ``shellbang`` from ``typescriptcommon.vim``
+" - ``typeScriptComment`` from ``typescriptcommon.vim``
+" - ``typescriptLineComment`` from ``typescriptcommon.vim``
+" - ``typescriptDocComment`` from ``typescriptcommon.vim``
+" - ``vimComment`` from ``vim.vim``
+" - ``vim9Comment`` from ``vim.vim``
+call s:h("Comment", { "fg": s:syn_comment })
+
+" Constants
+" TODO: Still needs to be done!
+" The following mappings point to ``Constant``
+" - [OVERRIDDEN] ``String`` from ``syncolor.vim``
+" - ``Character`` from ``syncolor.vim`` TODO: What points to character?
+" - [OVERRIDDEN] ``Number`` from ``syncolor.vim``
+" - ``Boolean`` from ``syncolor.vim`` TODO: What points to boolean?
+" - ``cConstant`` from ``c.vim``
+" - ``typescriptGlobal`` from ``typescriptcommon.vim``
+call s:h("Constant", { "fg": s:syn_constant })
+
+" Strings
+" The following mappings point to ``String``
+" - ``cString`` from ``c.vim``
+" - ``htmlValue`` from ``html.vim``
+" - ``htmlPreAttr`` from ``html.vim``
+" - ``htmlString`` from ``html.vim``
+" - ``htmlValue`` from ``html.vim``
+" - ``pythonString`` from ``python.vim``
+" - ``pythonRawString`` from ``python.vim``
+" - ``pythonQuotes`` from ``python.vim``
+" - ``typescriptString`` from ``typescriptcommon.vim``
+" - ``typescriptStringLiteralType`` from ``typescriptcommon.vim``
+" - ``typescriptTemplateLiteralType`` from ``typescriptcommong.vim``
+" - ``typescriptStringMember`` from ``typescriptcommon.vim``
+" - ``typescriptTemplate`` from ``typescriptcommon.vim``
+" - ``typescriptEventString`` from ``typescriptcommon.vim``
+" - ``typescriptDestructureString`` from ``typescriptcommon.vim``
+" - ``typescriptRegexpString`` from ``typescriptcommon.vim``
+" - ``typescriptStringProperty`` from ``typescriptcommon.vim``
+" - ``vimString`` from ``vim.vim``
+call s:h("String", { "fg": s:syn_string })
+
+call s:h("Number", { "fg": s:syn_number })
+call s:h("Statement", { "fg": s:syn_statement })
+call s:h("Identifier", { "fg": s:syn_identifier })
+call s:h("PreProc", { "fg": s:syn_preproc })
+call s:h("Function", { "fg": s:syn_function })
+call s:h("Type", { "fg": s:syn_type })
+call s:h("Keyword", { "fg": s:syn_keyword })
+call s:h("Special", { "fg": s:syn_special })
+call s:h("Error", { "fg": s:syn_error })
+
+
+" ===== C-specific
+" cFormat (format string components; points to cSpecial in ``c.vim``)
+
+
+" ===== Python-specific
+" pythonBuiltin (e.g. ``None``)
+" pythonDecorator (this is the ``@``)
+" pythonDecoratorName (the actual name)
+" pythonExceptions (e.g. ``KeyError``
+
+
+" ===== TypeScript-specific
+" typescriptDocNotation (tags in docstrings, where the docstrings are comments, e.g. ``@param`` -> '@')
+" typescriptDocTags (tags in docstrings, where the docstrings are comments, e.g. ``@param`` -> 'param)
+
+
+" ===== VIM-specific
+" vimSetEqual

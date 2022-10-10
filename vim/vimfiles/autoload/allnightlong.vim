@@ -22,7 +22,8 @@ let s:colors = {
     \ "blue": { "gui": "#5fafff", "cterm": "75", "cterm16": "12" },
     \ "purple": { "gui": "#af87ff", "cterm": "141", "cterm16": "13" },
     \ "orange": { "gui": "#ff8700", "cterm": "208", "cterm16": "3" },
-    \ "pink": { "gui": "#ff00ff", "cterm": "201", "cterm16": "13" },
+    \ "work_pink": { "gui": "#ff00ff", "cterm": "201", "cterm16": "13" },
+    \ "work_green": { "gui": "#00ff00", "cterm": "46", "cterm16": "10" },
 \}
 
 " Return the color palette
