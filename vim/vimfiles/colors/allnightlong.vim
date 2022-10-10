@@ -65,6 +65,9 @@ let s:ui_attention_bg = s:colors.yellow
 let s:ui_attention_bg_cur = s:colors.red
 let s:ui_cursor_bg = s:colors.yellow
 let s:ui_cursor_fg = s:ui_invert_fg
+let s:ui_error = s:colors.red " TODO: This is not red enough!
+
+let s:ui_element_dir = s:colors.blue
 
 let s:syn_diff_add = s:colors.green
 let s:syn_diff_change = s:colors.yellow
@@ -107,6 +110,12 @@ call s:h("CursorColumn", { "bg": s:ui_hover_bg })
 
 " Styling the vertical split
 call s:h("VertSplit", { "fg": s:ui_bg, "bg": s:ui_hover_bg })
+
+" Color of directories in listings, e.g. NerdTree
+call s:h("Directory", { "fg": s:ui_element_dir })
+
+" Error messages, e.g. unknown commands
+call s:h("ErrorMsg", { "fg": s:ui_invert_fg, "bg": s:ui_error })
 
 " The character under the cursor
 " FIXME: Doesn't seem to work, investigate!

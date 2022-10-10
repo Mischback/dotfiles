@@ -72,6 +72,7 @@ set noautoread      " and surely no automatic reading
 set nobackup        " deactivate auto-backup
 set nowb
 set noswapfile      " get rid of this nasty swap files
+" set cmdheight=0     " do not show the command line (requires vim > 9.0)
 
 set t_Co=256        " set colorspace to 256
 set background=dark " manually override the background
