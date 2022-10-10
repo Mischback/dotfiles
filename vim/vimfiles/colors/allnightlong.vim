@@ -75,7 +75,7 @@ let s:syn_string = s:colors.green
 let s:syn_constant = s:colors.work_green
 let s:syn_number = s:colors.orange
 let s:syn_statement = s:colors.blue
-let s:syn_identifier = s:colors.work_green
+let s:syn_identifier = s:colors.orange
 let s:syn_preproc = s:colors.work_green
 let s:syn_function = s:colors.work_green
 let s:syn_type = s:colors.work_green
@@ -213,6 +213,9 @@ call s:h("String", { "fg": s:syn_string })
 " - ``pythonNumber`` from ``python.vim`` (configurable?!)
 " - ``typescriptNumber`` from ``typescriptcommon.vim``
 " - ``Float`` from ``syncolor.vim``
+" - ``vimHiNmbr`` from ``vim.vim``
+" - ``vimMark`` from ``vim.vim``
+" - ``vimNumber`` from ``vim.vim``
 call s:h("Number", { "fg": s:syn_number })
 
 " Statements
@@ -228,8 +231,30 @@ call s:h("Number", { "fg": s:syn_number })
 " - ``Keyword`` from ``syncolor.vim``
 " - ``Exception`` from ``syncolor.vim``
 " - ``typescriptStatementKeyword`` from ``typescriptcommon.vim``
+" - ``vimCommand`` from ``vim.vim``
+" - ``vimKeyword`` from ``vim.vim``
+" - ``vimSearchDelim`` from ``vim.vim``
+" - ``vimSetSep`` from ``vim.vim``
+" - ``vimStatement`` from ``vim.vim``
 call s:h("Statement", { "fg": s:syn_statement })
+
+" Identifiers
+" The following mappings point to ``Identifier``
+" - ``htmlEndTag`` from ``html.vim`` (e.g. htmlTagName) FIXME: This needs adjustment (language-specific!)
+" - ``Function`` from ``syncolor.vim``
+" - ``typescriptVariable`` from ``typescriptcommon.vim``
+" - ``typescriptEnumKeyword`` from ``typescriptcommon.vim``
+" - ``typescriptOperator`` from ``typescriptcommon.vim``
+" - ``typescriptKeywordOp`` from ``typescriptcommon.vim``
+" - ``typescriptTypeParameter`` from ``typescriptcommon.vim``
+" - ``typescriptConstructSignature`` from ``typescriptcommon.vim``
+" - ``typescriptAliasDeclaration`` from ``typescriptcommon.vim``
+" - ``typescriptTypeReference`` from ``typescriptcommon.vim``
+" - ``vimFuncVar`` from ``vim.vim``
+" - ``vimSpecFile`` from ``vim.vim``
+" - ``vimVar`` from ``vim.vim``
 call s:h("Identifier", { "fg": s:syn_identifier })
+
 call s:h("PreProc", { "fg": s:syn_preproc })
 call s:h("Function", { "fg": s:syn_function })
 call s:h("Type", { "fg": s:syn_type })
