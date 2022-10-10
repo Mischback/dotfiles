@@ -105,6 +105,15 @@ augroup ColorColumnInsertMode
 augroup END
 " =========================================================
 
+" ===== custom functions ======================================================
+
+" Return the highlight group and its effective link
+" See https://stackoverflow.com/a/37040415
+function! SynStack ()
+    let l:s = synID(line('.'), col('.'), 1)
+    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+endfunction
+
 
 " ====== plugin settings ==================================
 
@@ -128,6 +137,9 @@ let mapleader = ","  " use , as the leader key
 nnoremap <Leader>b :buffers<CR>:buffer<Space>
 nnoremap <Leader>v :bprev<CR>
 nnoremap <Leader>n :bnext<CR>
+
+" Provide a mapping for the custom SynStack function
+map <F10> :call SynStack()<CR>
 
 " Mapping for indent-guides plugin
 nnoremap <Leader>g :IndentGuidesToggle<CR>
