@@ -49,111 +49,16 @@ endfunction
 " Fetch the colors
 let s:colors = allnightlong#GetColors()
 
-" Give the palette a semantic meaning
-let s:work_1 = s:colors.work_green
-let s:work_2 = s:colors.work_pink
-let s:ui_bg = s:colors.grey_1
-let s:ui_fg = s:colors.grey_10
-let s:ui_fg_dark = s:colors.grey_3
-let s:ui_fg_darker = s:colors.grey_2
-let s:ui_fg_darkest = s:colors.grey_0
-let s:ui_hover_bg = s:colors.grey_2
-let s:ui_hover_fg = s:colors.red
-let s:ui_invert_fg = s:colors.grey_1
-let s:ui_invert_bg = s:colors.grey_10
-let s:ui_attention_fg = s:ui_invert_fg
-let s:ui_attention_bg = s:colors.yellow
-let s:ui_attention_bg_cur = s:colors.red
-let s:ui_cursor_bg = s:colors.yellow
-let s:ui_cursor_fg = s:ui_invert_fg
-let s:ui_error = s:colors.red " TODO: This is not red enough!
-
-let s:ui_element_dir = s:colors.blue
-
-
 " Apply the colors to highlight groups
 
 " The overall window
-call s:h("Normal", { "fg": s:ui_fg, "bg": s:ui_bg })
-call s:h("EndOfBuffer", { "fg": s:ui_fg_darker, "bg": s:ui_bg })
-
-" e.g. '~' and '@' at the end of the window
-" FIXME: Evaluate what other themes do with this!
-call s:h("NonText", { "fg": s:work_2 })
-
-" Line number
-" This is the static default formatting. For the currently active line see
-" ``CursorLine`` and ``CursorLineNr`` below.
-" TODO: Personally I don't use relative line numbers, but it might be desirable
-"       to apply different colors to ``LineNrAbove`` and ``LineNrBelow``.
-call s:h("LineNr", { "fg": s:ui_fg_dark })
-call s:h("LineNrAbove", { "fg": s:ui_fg_dark })
-call s:h("LineNrBelow", { "fg": s:ui_fg_dark })
-
-" Column for *signs*
-" E.g. gitgutter uses this column.
-" TODO: How to style the actual signs?
-call s:h("SignColumn", { "fg": s:ui_fg_dark, "bg": s:ui_bg })
-
-" Modify the currently active line and column of the cursor
-" Must be activated in ``.vimrc`` with ``cursorline`` / ``cursorcolumn``
-" TODO: Evaluate the fg of ``CursorLineNr`` when the actual gitgutter colors
-"       are applied.
-call s:h("CursorLine", { "bg": s:ui_hover_bg })
-call s:h("CursorLineNr", { "fg": s:ui_hover_fg, "bg": s:ui_hover_bg })
-call s:h("CursorLineSign", { "bg": s:ui_hover_bg })  " FIXME: not working?!
-call s:h("CursorColumn", { "bg": s:ui_hover_bg })
-
-" Styling the vertical split
-call s:h("VertSplit", { "fg": s:ui_bg, "bg": s:ui_hover_bg })
-
-" Color of directories in listings, e.g. NerdTree
-call s:h("Directory", { "fg": s:ui_element_dir })
-
-" Error messages, e.g. unknown commands
-call s:h("ErrorMsg", { "fg": s:ui_invert_fg, "bg": s:ui_error })
-
-" The character under the cursor
-" FIXME: Doesn't seem to work, investigate!
-call s:h("Cursor", { "fg": s:ui_cursor_fg, "bg": s:ui_cursor_bg })
-call s:h("ICursor", { "fg": s:ui_cursor_fg, "bg": s:ui_cursor_bg })
-
-" Highlight search results
-" Must be activated in ``.vimrc`` with ``set hlsearch``.
-call s:h("Search", { "fg": s:ui_attention_fg, "bg": s:ui_attention_bg })
-call s:h("IncSearch", { "fg": s:ui_attention_fg, "bg": s:ui_attention_bg })
-" FIXME: This does not seem to work!
-call s:h("CurSearch", { "fg": s:ui_attention_fg, "bg": s:ui_attention_bg_cur })
-
-" Rulers to indicate the line length
-" TODO: Might be switched to a darker color, A contrast required
-call s:h("ColorColumn", { "fg": s:ui_invert_fg, "bg": s:ui_attention_bg })
-
-" Provide colors for Diffs
-" TODO: These do really really pop! Should darker versions be provided?
-call s:h("DiffAdd", { "fg": s:ui_invert_fg, "bg": s:colors.green })
-call s:h("DiffChange", { "fg": s:ui_invert_fg, "bg": s:colors.yellow })
-call s:h("DiffDelete", { "fg": s:ui_invert_fg, "bg": s:colors.red })
-call s:h("DiffText", { "fg": s:ui_invert_fg, "bg": s:colors.orange })
-
+call s:h("Normal", { "fg": s:colors.grey_70, "bg": s:colors.grey_11 })
 
 " The default set of syntax-related colors
 
-" Comments
-" The following mappings point to ``Comment``
-" - ``cComment`` from ``c.vim``
-" - ``cCppOut`` from ``c.vim``
-" - ``htmlComment`` from ``html.vim``
-" - ``htmlCommentPart`` from ``html.vim``
-" - ``htmlCssStyleComment`` from ``html.vim``
-" - ``pythonComment`` from ``python.vim``
-" - ``shellbang`` from ``typescriptcommon.vim``
-" - ``typeScriptComment`` from ``typescriptcommon.vim``
-" - ``typescriptLineComment`` from ``typescriptcommon.vim``
-" - ``typescriptDocComment`` from ``typescriptcommon.vim``
-" - ``vimComment`` from ``vim.vim``
-" - ``vim9Comment`` from ``vim.vim``
-call s:h("Comment", { "fg": s:colors.grey_5 })
+call s:h("Comment", { "fg": s:colors.grey_46 })
+call s:h("String", { "fg": s:colors.green })
+call s:h("Character", { "fg": s:colors.green_bright })
 
 " Constants
 " TODO: Still needs to be done!
@@ -164,7 +69,7 @@ call s:h("Comment", { "fg": s:colors.grey_5 })
 " - ``Boolean`` from ``syncolor.vim``
 " - ``cConstant`` from ``c.vim``
 " - ``typescriptGlobal`` from ``typescriptcommon.vim``
-call s:h("Constant", { "fg": s:colors.green })
+" call s:h("Constant", { "fg": s:colors.green })
 
 " Strings
 " The following mappings point to ``String``
@@ -216,7 +121,7 @@ call s:h("Constant", { "fg": s:colors.green })
 " - ``vimFuncVar`` from ``vim.vim``
 " - ``vimSpecFile`` from ``vim.vim``
 " - ``vimVar`` from ``vim.vim``
-call s:h("Identifier", { "fg": s:ui_fg })
+" call s:h("Identifier", { "fg": s:ui_fg })
 " call s:h("Function", { "fg": s:work_1 })
 
 " Statements
@@ -237,7 +142,7 @@ call s:h("Identifier", { "fg": s:ui_fg })
 " - ``vimSearchDelim`` from ``vim.vim``
 " - ``vimSetSep`` from ``vim.vim``
 " - ``vimStatement`` from ``vim.vim``
-call s:h("Statement", { "fg": s:colors.blue })
+" call s:h("Statement", { "fg": s:colors.blue })
 " call s:h("Keyword", { "fg": s:work_1 })
 
 " Preprocessor stuff
@@ -264,7 +169,7 @@ call s:h("Statement", { "fg": s:colors.blue })
 " - ``vimHLMod`` from ``vim.vim``
 " - ``vimMenuName`` from ``vim.vim``
 " - ``vimOption`` from ``vim.vim``  " FIXME: Override this!
-call s:h("PreProc", { "fg": s:colors.orange })
+" call s:h("PreProc", { "fg": s:colors.orange })
 
 " Include statements
 " The following mappings point to ``Include``
@@ -273,11 +178,11 @@ call s:h("PreProc", { "fg": s:colors.orange })
 " - ``typescriptRef`` from ``typescriptcommon.vim``
 " call s:h("Include", { "fg": s:work_1 })
 
-call s:h("Type", { "fg": s:colors.purple })
+" call s:h("Type", { "fg": s:colors.purple })
 
-call s:h("Special", { "fg": s:colors.yellow })
+" call s:h("Special", { "fg": s:colors.yellow })
 
-call s:h("Error", { "fg": s:colors.red })
+" call s:h("Error", { "fg": s:colors.red })
 
 
 " ===== C-specific
@@ -293,7 +198,7 @@ call s:h("Error", { "fg": s:colors.red })
 
 " ===== TypeScript-specific
 " typescriptImport (make this consistent with C/Python)
-highlight link typescriptImport Include
+" highlight link typescriptImport Include
 " typescriptExport
 " typescriptDocNotation (tags in docstrings, where the docstrings are comments, e.g. ``@param`` -> '@')
 " typescriptDocTags (tags in docstrings, where the docstrings are comments, e.g. ``@param`` -> 'param)
