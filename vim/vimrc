@@ -37,6 +37,8 @@ Plugin 'vim-airline/vim-airline'
 " Read and apply .editorconfig
 Plugin 'editorconfig/editorconfig-vim'
 
+Plugin 'vim-python/python-syntax'
+
 " Colorschemes
 
 " looks really nice, evaluate in 256
@@ -53,6 +55,9 @@ Plugin 'danilo-augusto/vim-afterglow'
 " - looking good on Python and TypeScript
 " - colors hardcoded, without palette abstraction
 Plugin 'pasela/edark.vim'
+
+Plugin 'joshdick/onedark.vim'
+Plugin 'NLKNguyen/papercolor-theme'
 
 call vundle#end()
 " =========================================================
