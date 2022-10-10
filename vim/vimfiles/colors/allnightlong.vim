@@ -74,7 +74,7 @@ let s:syn_comment = s:colors.grey_5
 let s:syn_string = s:colors.green
 let s:syn_constant = s:colors.work_green
 let s:syn_number = s:colors.orange
-let s:syn_statement = s:colors.work_green
+let s:syn_statement = s:colors.blue
 let s:syn_identifier = s:colors.work_green
 let s:syn_preproc = s:colors.work_green
 let s:syn_function = s:colors.work_green
@@ -214,6 +214,20 @@ call s:h("String", { "fg": s:syn_string })
 " - ``typescriptNumber`` from ``typescriptcommon.vim``
 " - ``Float`` from ``syncolor.vim``
 call s:h("Number", { "fg": s:syn_number })
+
+" Statements
+" The followin mappings point to ``Statement``
+" - ``cStatement`` from ``c.vim`` (goto, break, return, continue, ...)
+" - ``htmlStatement`` from ``html.vim`` (e.g. htmlTagName)
+" - ``pythonStatement`` from ``python.vim`` (def, class, False, None, True, as, break, ...)
+" - ``pythonAsync`` from ``python.vim``
+" - ``Conditional`` from ``syncolor.vim``
+" - ``Repeat`` from ``syncolor.vim``
+" - ``Label`` from ``syncolor.vim``
+" - ``Operator`` from ``syncolor.vim``
+" - ``Keyword`` from ``syncolor.vim``
+" - ``Exception`` from ``syncolor.vim``
+" - ``typescriptStatementKeyword`` from ``typescriptcommon.vim``
 call s:h("Statement", { "fg": s:syn_statement })
 call s:h("Identifier", { "fg": s:syn_identifier })
 call s:h("PreProc", { "fg": s:syn_preproc })
