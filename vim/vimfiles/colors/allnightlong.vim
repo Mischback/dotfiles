@@ -73,7 +73,7 @@ let s:ui_element_dir = s:colors.blue
 let s:syn_comment = s:colors.grey_5
 let s:syn_string = s:colors.green
 let s:syn_constant = s:colors.work_green
-let s:syn_number = s:colors.work_green
+let s:syn_number = s:colors.orange
 let s:syn_statement = s:colors.work_green
 let s:syn_identifier = s:colors.work_green
 let s:syn_preproc = s:colors.work_green
@@ -206,6 +206,13 @@ call s:h("Constant", { "fg": s:syn_constant })
 " - ``vimString`` from ``vim.vim``
 call s:h("String", { "fg": s:syn_string })
 
+" Numbers
+" The following mappings point to ``Number``
+" - ``cNumber`` from ``c.vim``
+" - ``cOctal`` from ``c.vim``
+" - ``pythonNumber`` from ``python.vim`` (configurable?!)
+" - ``typescriptNumber`` from ``typescriptcommon.vim``
+" - ``Float`` from ``syncolor.vim``
 call s:h("Number", { "fg": s:syn_number })
 call s:h("Statement", { "fg": s:syn_statement })
 call s:h("Identifier", { "fg": s:syn_identifier })
