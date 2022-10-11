@@ -53,4 +53,4 @@ let s:colors = allnightlong#GetColors()
 " ===== Apply the colors ======================================================
 
 " The overall window
-call s:h("Normal", { "fg": s:colors.grey_70, "bg": s:colors.grey_11 })
+call s:h("Normal", { "fg": s:colors.base_light_grey, "bg": s:colors.base_dark_grey })
