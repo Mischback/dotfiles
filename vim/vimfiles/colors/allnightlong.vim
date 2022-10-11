@@ -54,3 +54,14 @@ let s:colors = allnightlong#GetColors()
 
 " The overall window
 call s:h("Normal", { "fg": s:colors.base_light_grey, "bg": s:colors.base_dark_grey })
+
+
+" ===== Syntax Highlighting ===================================================
+
+call s:h("Comment", { "fg": s:colors.base_medium_grey })
+call s:h("Constant", { "fg": s:colors.base_green })
+call s:h("Identifier", { "fg": s:colors.base_light_grey })
+call s:h("Statement", { "fg": s:colors.base_blue })
+call s:h("PreProc", { "fg": s:colors.base_purple })
+call s:h("Type", { "fg": s:colors.base_teal })
+call s:h("Special", { "fg": s:colors.base_medium_grey })
