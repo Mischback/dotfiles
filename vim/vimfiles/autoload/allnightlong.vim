@@ -20,7 +20,9 @@ let s:colors = {
     \ "base_orange": { "gui": "#ff8700", "cterm": "208", "cterm16": "2" },
     \ "orange_dark": { "gui": "#ff5f00", "cterm": "202", "cterm16": "2" },
     \ "base_red": { "gui": "#af0000", "cterm": "124", "cterm16": "1" },
+    \ "base_yellow": { "gui": "#ffd700", "cterm": "220", "cterm16": "11" },
     \ "grey_lightest": { "gui": "#d0d0d0", "cterm": "252", "cterm16": "15" },
+    \ "dark_grey_light": { "gui": "#3a3a3a", "cterm": "237", "cterm16": "0" },
     \ "work_pink": { "gui": "#ff00ff", "cterm": "201", "cterm16": "13" },
 \}
 

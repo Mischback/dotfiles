@@ -97,6 +97,7 @@ set sidescroll=10   " ... and characters be visible while scrolling
 set cursorline      " highlight the current line
 set cursorlineopt=number,screenline
 set hlsearch        " highlight search results
+set incsearch       " highlight while still typing
 
 " ``colorcolumn`` let you set visual markers for the line length.
 " As this is only relevant while editing, the setting is not applied directly.
