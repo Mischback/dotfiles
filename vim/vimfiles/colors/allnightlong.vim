@@ -79,7 +79,12 @@ call s:h("VertSplit", { "fg": s:colors.dark_grey_base, "bg": s:colors.dark_grey_
 " === Hover Styling
 " Apply dedicated styling for the line of the cursor.
 " Note: Must be activated in ``.vimrc`` with ``cursorline`` / ``cursorcolumn``.
-call s:h("CursorLine", { "bg": s:colors.dark_grey_light })
+" Note: In diff mode the default colors are kept, instead, underline is used.
+if &diff
+    call s:h("CursorLine", { "gui": "underline", "cterm": "underline" })
+else
+    call s:h("CursorLine", { "bg": s:colors.dark_grey_light })
+endif
 call s:h("CursorLineNr", { "fg": s:colors.orange_dark, "bg": s:colors.dark_grey_light })
 call s:h("CursorLineSign", { "bg": s:colors.dark_grey_light })  " FIXME not working!
 call s:h("CursorColumn", { "bg": s:colors.dark_grey_light })
@@ -103,8 +108,8 @@ call s:h("IncSearch", { "fg": s:colors.dark_grey_base, "bg": s:colors.orange_bas
 " These groups are used in vim's diff mode (``vim -d``), but are picked up by
 " gitgutter for the *signs* column (may be overridden for gitgutter).
 call s:h("DiffAdd", { "fg": s:colors.dark_grey_base, "bg": s:colors.green_light })
-call s:h("DiffChange", { "fg": s:colors.dark_grey_base, "bg": s:colors.yellow_base })
-call s:h("DiffText", { "fg": s:colors.yellow_light, "bg": s:colors.orange_base })
+call s:h("DiffChange", { "fg": s:colors.yellow_base, "gui": "underline", "cterm": "underline" })
+call s:h("DiffText", { "fg": s:colors.dark_grey_base, "bg": s:colors.yellow_base })
 call s:h("DiffDelete", { "fg": s:colors.dark_grey_base, "bg": s:colors.red_base })
 
 
