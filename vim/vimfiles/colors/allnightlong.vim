@@ -99,6 +99,14 @@ call s:h("Directory", { "fg": s:colors.blue_base })
 call s:h("Search", { "fg": s:colors.dark_grey_base, "bg": s:colors.yellow_base })
 call s:h("IncSearch", { "fg": s:colors.dark_grey_base, "bg": s:colors.orange_base })
 
+" === Diff
+" These groups are used in vim's diff mode (``vim -d``), but are picked up by
+" gitgutter for the *signs* column (may be overridden for gitgutter).
+call s:h("DiffAdd", { "fg": s:colors.dark_grey_base, "bg": s:colors.green_light })
+call s:h("DiffChange", { "fg": s:colors.dark_grey_base, "bg": s:colors.yellow_base })
+call s:h("DiffText", { "fg": s:colors.yellow_light, "bg": s:colors.orange_base })
+call s:h("DiffDelete", { "fg": s:colors.dark_grey_base, "bg": s:colors.red_base })
+
 
 " ===== Syntax Highlighting ===================================================
 
