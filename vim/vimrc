@@ -81,7 +81,7 @@ set noswapfile      " get rid of this nasty swap files
 
 set t_Co=256        " set colorspace to 256
 set background=dark " manually override the background
-colorscheme edark  " actually apply the colorscheme
+colorscheme allnightlong  " actually apply the colorscheme
 " =========================================================
 
 
