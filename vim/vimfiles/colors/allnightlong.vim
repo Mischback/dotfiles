@@ -59,9 +59,21 @@ call s:h("Normal", { "fg": s:colors.base_light_grey, "bg": s:colors.base_dark_gr
 " ===== Syntax Highlighting ===================================================
 
 call s:h("Comment", { "fg": s:colors.base_medium_grey })
+
 call s:h("Constant", { "fg": s:colors.base_green })
+call s:h("Number", { "fg": s:colors.base_orange })
+highlight link Boolean Number
+
 call s:h("Identifier", { "fg": s:colors.base_light_grey })
+call s:h("Function", { "fg": s:colors.orange_dark })
+
 call s:h("Statement", { "fg": s:colors.base_blue })
+
 call s:h("PreProc", { "fg": s:colors.base_purple })
 call s:h("Type", { "fg": s:colors.base_teal })
 call s:h("Special", { "fg": s:colors.base_medium_grey })
+
+call s:h("Ignore", { "fg": s:colors.base_medium_grey })
+call s:h("Error", { "fg": s:colors.grey_lightest, "bg": s:colors.base_red })
+" TODO: The inverted style is good, the color might need adjustment
+call s:h("Todo", { "fg": s:colors.base_dark_grey, "bg": s:colors.orange_dark })

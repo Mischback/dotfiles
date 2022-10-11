@@ -17,6 +17,10 @@ let s:colors = {
     \ "base_blue": { "gui": "#5fafff", "cterm": "75", "cterm16": "12" },
     \ "base_purple": { "gui": "#af5fd7", "cterm": "134", "cterm16": "5" },
     \ "base_teal": { "gui": "#00af87", "cterm": "36", "cterm16": "6" },
+    \ "base_orange": { "gui": "#ff8700", "cterm": "208", "cterm16": "2" },
+    \ "orange_dark": { "gui": "#ff5f00", "cterm": "202", "cterm16": "2" },
+    \ "base_red": { "gui": "#af0000", "cterm": "124", "cterm16": "1" },
+    \ "grey_lightest": { "gui": "#d0d0d0", "cterm": "252", "cterm16": "15" },
     \ "work_pink": { "gui": "#ff00ff", "cterm": "201", "cterm16": "13" },
 \}
 
