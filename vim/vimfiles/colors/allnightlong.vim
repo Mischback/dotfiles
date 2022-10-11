@@ -56,27 +56,25 @@ let s:colors = allnightlong#GetColors()
 " ===== The overall window
 
 " === Default Styling
-call s:h("Normal", { "fg": s:colors.base_light_grey, "bg": s:colors.base_dark_grey })
-" TODO: Might have an even darker foreground color, but still visible
-call s:h("EndOfBuffer", { "fg": s:colors.base_medium_grey, "bg": s:colors.base_dark_grey })
+call s:h("Normal", { "fg": s:colors.light_grey_base, "bg": s:colors.dark_grey_base })
+call s:h("EndOfBuffer", { "fg": s:colors.dark_grey_light, "bg": s:colors.dark_grey_base })
 " TODO: When is this actually used?
 call s:h("NonText", { "fg": s:colors.work_pink })
 
 " === Line Number Column
 " This is only the default static formatting, see ``Cursorline`` block below.
-" TODO: Might be even a shade darker
-call s:h("LineNr", { "fg": s:colors.base_medium_grey })
-call s:h("LineNrAbove", { "fg": s:colors.base_medium_grey })
-call s:h("LineNrBelow", { "fg": s:colors.base_medium_grey })
+call s:h("LineNr", { "fg": s:colors.medium_grey_dark })
+call s:h("LineNrAbove", { "fg": s:colors.medium_grey_dark })
+call s:h("LineNrBelow", { "fg": s:colors.medium_grey_dark })
 
 " === Sign Column
 " This is only the default styling of the column, the actual *signs* may need
 " additional styling.
-call s:h("SignColumn", { "fg": s:colors.base_medium_grey, "bg": s:colors.base_dark_grey })
+call s:h("SignColumn", { "fg": s:colors.medium_grey_base, "bg": s:colors.dark_grey_base })
 
 " === Vertical Split
 " While the window is splitted vertically, a column is used as seperator.
-call s:h("VertSplit", { "fg": s:colors.base_dark_grey, "bg": s:colors.dark_grey_light })
+call s:h("VertSplit", { "fg": s:colors.dark_grey_base, "bg": s:colors.dark_grey_light })
 
 " === Hover Styling
 " Apply dedicated styling for the line of the cursor.
@@ -91,35 +89,35 @@ call s:h("CursorColumn", { "bg": s:colors.dark_grey_light })
 
 " === Error messages
 " E.g. unknown commands
-call s:h("ErrorMsg", { "fg": s:colors.grey_lightest, "bg": s:colors.base_red })
+call s:h("ErrorMsg", { "fg": s:colors.light_grey_light, "bg": s:colors.red_base })
 
 " === Directory
-call s:h("Directory", { "fg": s:colors.base_blue })
+call s:h("Directory", { "fg": s:colors.blue_base })
 
 " === Search Results
 " Note: Must be activated in ``.vimrc`` with ``set hlsearch`` / ``set incsearch``.
-call s:h("Search", { "fg": s:colors.base_dark_grey, "bg": s:colors.base_yellow })
-call s:h("IncSearch", { "fg": s:colors.base_dark_grey, "bg": s:colors.base_orange })
+call s:h("Search", { "fg": s:colors.dark_grey_base, "bg": s:colors.yellow_base })
+call s:h("IncSearch", { "fg": s:colors.dark_grey_base, "bg": s:colors.orange_base })
 
 
 " ===== Syntax Highlighting ===================================================
 
-call s:h("Comment", { "fg": s:colors.base_medium_grey })
+call s:h("Comment", { "fg": s:colors.medium_grey_base })
 
-call s:h("Constant", { "fg": s:colors.base_green })
-call s:h("Number", { "fg": s:colors.base_orange })
+call s:h("Constant", { "fg": s:colors.green_base })
+call s:h("Number", { "fg": s:colors.orange_base })
 highlight link Boolean Number
 
-call s:h("Identifier", { "fg": s:colors.base_light_grey })
+call s:h("Identifier", { "fg": s:colors.light_grey_base })
 call s:h("Function", { "fg": s:colors.orange_dark })
 
-call s:h("Statement", { "fg": s:colors.base_blue })
+call s:h("Statement", { "fg": s:colors.blue_base })
 
-call s:h("PreProc", { "fg": s:colors.base_purple })
-call s:h("Type", { "fg": s:colors.base_teal })
-call s:h("Special", { "fg": s:colors.base_medium_grey })
+call s:h("PreProc", { "fg": s:colors.purple_base })
+call s:h("Type", { "fg": s:colors.teal_base })
+call s:h("Special", { "fg": s:colors.medium_grey_base })
 
-call s:h("Ignore", { "fg": s:colors.base_medium_grey })
-call s:h("Error", { "fg": s:colors.grey_lightest, "bg": s:colors.base_red })
+call s:h("Ignore", { "fg": s:colors.medium_grey_base })
+call s:h("Error", { "fg": s:colors.light_grey_light, "bg": s:colors.red_base })
 " TODO: The inverted style is good, the color might need adjustment
-call s:h("Todo", { "fg": s:colors.base_dark_grey, "bg": s:colors.orange_dark })
+call s:h("Todo", { "fg": s:colors.dark_grey_base, "bg": s:colors.orange_dark })
