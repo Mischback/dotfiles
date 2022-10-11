@@ -208,7 +208,16 @@ set statusline=
 " Uses the highlight group ``customStatusLineMode``, which is dynamically
 " linked in ``CustomStatusLineSetMode()``.
 set statusline+=%#customStatusLineMode#
-set statusline+=\ %{toupper(CustomStatusLineSetMode(mode()))}\ " foo
+set statusline+=\ %{toupper(CustomStatusLineSetMode(mode()))}\ " whitespace
+set statusline+=%*
+
+set statusline+=%=  " Left/Right seperator
+
+" Cursor Position
+" [COLUMN] ([LINE]/[MAXLINES])
+set statusline+=%#customStatusLineMode#
+set statusline+=\ %3.3v
+set statusline+=\ (%2.5l/%2.5L)\ " whitespace
 set statusline+=%*
 
 " ===== keys ==================================================================
