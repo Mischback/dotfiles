@@ -184,23 +184,6 @@ set statusline+=%#customStatusLineMode#
 set statusline+=\ %{toupper(g:currentmode[mode()])}\ " foo
 set statusline+=%*
 
-" the filename (relative to the working directory)
-" TODO: Needs some sort of truncation...
-set statusline+=%f
-
-" Display a warning if file encoding is **not** utf-8
-" Note: This might be possible, but uncommon. In fact, ``editorconfig`` should
-"       handle this already.
-set statusline+=%#warningmsg#
-set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
-set statusline+=%*
-
-" Switch to right column
-set statusline+=%=
-
-" Current Git branch including dirty flag
-set statusline+=%{fugitive#statusline()}
-
 " ===== keys ==================================================================
 
 let mapleader = ","  " use , as the leader key
