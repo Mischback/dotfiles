@@ -115,6 +115,15 @@ call s:h("DiffText", { "fg": s:colors.dark_grey_base, "bg": s:colors.yellow_base
 call s:h("DiffDelete", { "fg": s:colors.dark_grey_base, "bg": s:colors.red_base })
 
 
+" ===== Plugin-specific Highlighting ==========================================
+
+" === NerdTree
+highlight link NerdTreeHelp Comment
+highlight link NerdTreeFile Ientifier
+highlight link NerdTreeExecFile String
+highlight link NerdTreeCWD Function
+
+
 " ===== Syntax Highlighting ===================================================
 
 call s:h("Comment", { "fg": s:colors.medium_grey_base })
