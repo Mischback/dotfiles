@@ -113,10 +113,26 @@ augroup END
 " ===== custom functions ======================================================
 
 " Return the highlight group and its effective link
-" See https://stackoverflow.com/a/37040415
 function! SynStack ()
-    let l:s = synID(line('.'), col('.'), 1)
-    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+    if !exists("*synstack")
+        return
+    endif
+
+    " get the current line and column under cursor
+    let l:cur_line = line(".")
+    let l:cur_col = col(".")
+
+    " get the current stack of highlight groups
+    let l:stack = map(synstack(l:cur_line, l:cur_col), "synIDattr(v:val, 'name')")
+
+    " get the effective highlight group for styling
+    let l:eff_grp_id = synIDtrans(synID(l:cur_line, l:cur_col, 1))
+    let l:eff_grp_str = synIDattr(l:eff_grp_id, "name")
+
+    " print the results
+    echo l:stack
+    echon " --> "
+    echon l:eff_grp_str
 endfunction
 
 
@@ -144,7 +160,7 @@ nnoremap <Leader>v :bprev<CR>
 nnoremap <Leader>n :bnext<CR>
 
 " Provide a mapping for the custom SynStack function
-map <F10> :call SynStack()<CR>
+map <F3> :call SynStack()<CR>
 
 " Mapping for indent-guides plugin
 nnoremap <Leader>g :IndentGuidesToggle<CR>
