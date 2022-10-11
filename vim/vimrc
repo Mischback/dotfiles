@@ -11,7 +11,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
-" ===== Vundle Plugins ====================================
+" ===== Vundle Plugins ========================================================
 
 " Manage Vundle with Vundle
 Plugin 'gmarik/Vundle.vim'
@@ -40,30 +40,15 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'vim-python/python-syntax'
 
 " Colorschemes
-
-" looks really nice, evaluate in 256
-"
-" - Colors seem a little too tuned down
-" - the primary color (white-ish) is a little to hard in contrast to the backround
-" - Python and Typescript looking good
-" - I don't really like the colors...
-Plugin 'danilo-augusto/vim-afterglow'
-
-" evaluate for 256, might need color adjustments; some nice features
-"
-" - low contrast between primary color and (linewise) comments
-" - looking good on Python and TypeScript
-" - colors hardcoded, without palette abstraction
+" FIXME: These are primarily for reference while developing a custom theme.
 Plugin 'pasela/edark.vim'
-
 Plugin 'joshdick/onedark.vim'
 Plugin 'NLKNguyen/papercolor-theme'
 
 call vundle#end()
-" =========================================================
 
 
-" ===== general configuration =============================
+" ===== general configuration =================================================
 
 syntax on           " enable syntax hightlighting
 set number          " enable line numbers
@@ -82,10 +67,9 @@ set noswapfile      " get rid of this nasty swap files
 set t_Co=256        " set colorspace to 256
 set background=dark " manually override the background
 colorscheme allnightlong  " actually apply the colorscheme
-" =========================================================
 
 
-" ===== editing ===========================================
+" ===== editing ===============================================================
 
 set nowrap          " don't wrap lines
 set linebreak       " and surely don't wrap text in the middle of a word
@@ -109,7 +93,7 @@ augroup ColorColumnInsertMode
     autocmd InsertEnter * setlocal colorcolumn=80
     autocmd InsertLeave * setlocal colorcolumn=0
 augroup END
-" =========================================================
+
 
 " ===== custom functions ======================================================
 
@@ -137,21 +121,15 @@ function! SynStack ()
 endfunction
 
 
-" ====== plugin settings ==================================
+" ====== plugin settings ======================================================
 
 " indent-guides
+" FIXME: Set the required highlight groups in allnightlong.vim
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
 
-" GitGutter (color adjustments)
-"highlight! link SignColumn LineNr
-"highlight GitGutterAdd    guifg=#009900 ctermfg=2
-"highlight GitGutterChange guifg=#bbbb00 ctermfg=3
-"highlight GitGutterDelete guifg=#ff2222 ctermfg=1
-" =========================================================
 
-
-" ===== keys ==============================================
+" ===== keys ==================================================================
 
 let mapleader = ","  " use , as the leader key
 
@@ -161,7 +139,7 @@ nnoremap <Leader>v :bprev<CR>
 nnoremap <Leader>n :bnext<CR>
 
 " Provide a mapping for the custom SynStack function
-map <F3> :call SynStack()<CR>
+nnoremap <Leader>h :call SynStack()<CR>
 
 " Mapping for indent-guides plugin
 nnoremap <Leader>g :IndentGuidesToggle<CR>
@@ -169,4 +147,3 @@ nnoremap <Leader>g :IndentGuidesToggle<CR>
 command! W :w       " let me save with 'W'
 
 map <F2> :NERDTreeToggle<CR>
-" =========================================================
