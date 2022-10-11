@@ -67,10 +67,13 @@ call s:h("LineNr", { "fg": s:colors.medium_grey_dark })
 call s:h("LineNrAbove", { "fg": s:colors.medium_grey_dark })
 call s:h("LineNrBelow", { "fg": s:colors.medium_grey_dark })
 
-" === Sign Column
-" This is only the default styling of the column, the actual *signs* may need
-" additional styling.
-call s:h("SignColumn", { "fg": s:colors.medium_grey_base, "bg": s:colors.dark_grey_base })
+" === Additional Columns
+" These columns are used to indicate folding and / or other additional
+" information, like the indicators of gitgutter.
+call s:h("SignColumn", {})
+call s:h("FoldColumn", {})
+" TODO: Probably this needs a color adjustment
+call s:h("Folded", { "fg": s:colors.yellow_light })
 
 " === Vertical Split
 " While the window is splitted vertically, a column is used as seperator.
@@ -86,7 +89,6 @@ else
     call s:h("CursorLine", { "bg": s:colors.dark_grey_light })
 endif
 call s:h("CursorLineNr", { "fg": s:colors.orange_dark, "bg": s:colors.dark_grey_light })
-call s:h("CursorLineSign", { "bg": s:colors.dark_grey_light })  " FIXME not working!
 call s:h("CursorColumn", { "bg": s:colors.dark_grey_light })
 
 
