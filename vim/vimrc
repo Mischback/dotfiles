@@ -139,6 +139,68 @@ let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
 
 
+" ===== Status Line ===========================================================
+" Great example: https://github.com/scrooloose/vimfiles/blob/master/vimrc
+" See: https://gist.github.com/meskarune/57b613907ebd1df67eb7bdb83c6e6641
+
+" Map the output of ``mode()`` to actual strings
+let g:currentmode={
+    \ 'n'  : 'Normal',
+    \ 'no' : 'Normal·Operator Pending',
+    \ 'v'  : 'Visual',
+    \ 'V'  : 'V·Line',
+    \ '^V' : 'V·Block',
+    \ 's'  : 'Select',
+    \ 'S'  : 'S·Line',
+    \ '^S' : 'S·Block',
+    \ 'i'  : 'Insert',
+    \ 'R'  : 'Replace',
+    \ 'Rv' : 'V·Replace',
+    \ 'c'  : 'Command',
+    \ 'cv' : 'Vim Ex',
+    \ 'ce' : 'Ex',
+    \ 'r'  : 'Prompt',
+    \ 'rm' : 'More',
+    \ 'r?' : 'Confirm',
+    \ '!'  : 'Shell',
+    \ 't'  : 'Terminal'
+    \}
+
+set laststatus=2    " make the statusline actually visible
+set noshowmode      " don't show the mode, as it is included in the statusline
+
+" FIXME: link to actual highlight groups
+" TODO: Obviously these may be provided in our custom colorscheme (and this
+"       would be the right place *imho*), but other users may use my statusline
+"       setup without using the colorscheme. A fallback must be provided here.
+au InsertEnter * highlight link customStatusLineMode Statement
+au InsertLeave * highlight link customStatusLineMode Function
+
+" Desired Layout
+" {VIM MODE}{FILENAME [WARNINGS]}
+set statusline=
+
+set statusline+=%#customStatusLineMode#
+set statusline+=\ %{toupper(g:currentmode[mode()])}\ " foo
+set statusline+=%*
+
+" the filename (relative to the working directory)
+" TODO: Needs some sort of truncation...
+set statusline+=%f
+
+" Display a warning if file encoding is **not** utf-8
+" Note: This might be possible, but uncommon. In fact, ``editorconfig`` should
+"       handle this already.
+set statusline+=%#warningmsg#
+set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
+set statusline+=%*
+
+" Switch to right column
+set statusline+=%=
+
+" Current Git branch including dirty flag
+set statusline+=%{fugitive#statusline()}
+
 " ===== keys ==================================================================
 
 let mapleader = ","  " use , as the leader key
