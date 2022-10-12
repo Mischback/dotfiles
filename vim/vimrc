@@ -59,6 +59,7 @@ set noautowrite     " thanks, no automatic writing
 set noautowriteall
 set confirm
 set noautoread      " and surely no automatic reading
+set updatetime=500  " make automatic updates faster (default: 4000)
 set nobackup        " deactivate auto-backup
 set nowb
 set noswapfile      " get rid of this nasty swap files
@@ -209,6 +210,12 @@ function CustomStatusLine() abort
         return s:sl
     endif
 
+    " Identify vim's internal help files
+    if getbufvar("", "&buftype") == "help"
+        let s:sl .= "HELP: %f"
+        return s:sl
+    endif
+
     " This is the statusline for ACTIVE windows
 
     " VIM mode
@@ -220,13 +227,24 @@ function CustomStatusLine() abort
     let s:sl .= "%*"
 
     " File information
-    let s:sl .= " %f"
+    " Includes:
+    "   - number of the buffer (%n)
+    "   - filename (relative to working directory; %f)
+    "   - [optional] modified flag
+    "   - [optional] read-only flag
+    let s:sl .= " %n: %f"
+    let s:sl .= "%( %m%)"
+    let s:sl .= "%( %r%)"
 
     " Left/Right seperator
     let s:sl .= "%="
 
     " Cursor Position
     let s:sl .= " %2.5l:%-3.3v"
+
+    " File Meta Information (nice to know)
+    " filetype, encoding and line ending style
+    let s:sl .= "%( [". &filetype .", ". &fileencoding .", ". &fileformat ."]%)"
 
     return s:sl
 endfunction
