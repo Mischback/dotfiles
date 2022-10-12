@@ -28,6 +28,9 @@ Plugin 'airblade/vim-gitgutter'
 " Show indentation guides
 Plugin 'nathanaelkane/vim-indent-guides'
 
+" Automatically jump to last edit when (re) opening files
+Plugin 'farmergreg/vim-lastplace'
+
 " Read and apply .editorconfig
 Plugin 'editorconfig/editorconfig-vim'
 
