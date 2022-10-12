@@ -192,6 +192,34 @@ function! CustomStatusLineSetMode(currentMode) abort
 endfunction
 
 
+" Show the count of current search matches in the status line.
+"
+" The output can/will be deactivated, if the search highlight is cleared with
+" ``nohls``.
+" See: https://groups.google.com/g/vim_dev/c/XzvOP1J--YE/m/3Z0Fylg2BQAJ
+function! CustomStatusLineMatchCount() abort
+    if !v:hlsearch
+        return ""
+    endif
+
+    try
+        let s:count = searchcount({"maxcount": 0, "timeout": 50})
+    catch /^Vim\%((\a\+)\)\=:\%(E486\)\@!/
+        return "[?/??]"
+    endtry
+
+    if empty(s:count)
+        return ""
+    endif
+
+    return s:count.total
+            \ ? s:count.incomplete
+                \  ? printf("[%d/??]", s:count.current)
+                \  : printf("[%d/%d]", s:count.current, s:count.total)
+            \ : "[0/0]"
+endfunction
+
+
 " Return the actual statusline string, depending on the window's status.
 "
 " Main purpose of this function is the provision of different statuslines for
@@ -239,6 +267,8 @@ function! CustomStatusLine() abort
 
     " Left/Right seperator
     let s:sl .= "%="
+
+    let s:sl .= "%{CustomStatusLineMatchCount()}"
 
     " Cursor Position
     let s:sl .= " %2.5l:%-3.3v"
