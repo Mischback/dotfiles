@@ -186,7 +186,12 @@ function! CustomStatusLineSetMode(currentMode)
         exe "highlight link customStatusLineMode customStatusLineModeNormal"
     endif
 
-    " the actual return value is the *verbose* string
+    " the actual return value is the *verbose* string;
+    " if the window width is smaller than 60 characters, only the first letter
+    " of the mode is returned
+    if winwidth(0) < 60
+        return l:modemap[a:currentMode][0]
+    endif
     return l:modemap[a:currentMode]
 endfunction
 
@@ -217,24 +222,17 @@ function CustomStatusLine() abort
     endif
 
     " This is the statusline for ACTIVE windows
-    let s:sl .= "%#customStatusLineBgActive#"
-
-    " VIM mode
-    " Uses the highlight group ``customStatusLineMode``, which is dynamically
-    " linked in ``CustomStatusLineSetMode()``.
-    " FIXME: Do we really need to call another function?!
-    let s:sl .= "%#customStatusLineMode#"
-    let s:sl .= " %{toupper(CustomStatusLineSetMode(mode()))} "
-    let s:sl .= "%*"
 
     " File information
     " Includes:
-    "   - number of the buffer (%n)
     "   - filename (relative to working directory; %f)
     "   - [optional] modified flag
     "   - [optional] read-only flag
+    let s:sl .= "%#customStatusLineMode#"
+    let s:sl .= "%3.3n " " works ok up to buffer 99!
+    let s:sl .= "%*"
     let s:sl .= "%#customStatusLineActiveFileInfo#"
-    let s:sl .= " %n: %f"
+    let s:sl .= " %f"
     let s:sl .= "%*"
     let s:sl .= "%( %#customStatusLineActiveFileInfoMod#%m%*%)"
     let s:sl .= "%( %#customStatusLineActiveFileInfoRO#%r%*%)"
@@ -247,9 +245,20 @@ function CustomStatusLine() abort
 
     " File Meta Information (nice to know)
     " filetype, encoding and line ending style
-    let s:sl .= "%( [". &filetype .", ". &fileencoding .", ". &fileformat ."]%)"
+    " This information is only included if the the window has more than
+    " 60 characters of width
+    if winwidth(0) >= 60
+        let s:sl .= "%( [". &filetype .", ". &fileencoding .", ". &fileformat ."]%)"
+    endif
 
+    " VIM mode
+    " Uses the highlight group ``customStatusLineMode``, which is dynamically
+    " linked in ``CustomStatusLineSetMode()``.
+    " FIXME: Do we really need to call another function?!
+    let s:sl .= "%#customStatusLineMode#"
+    let s:sl .= " %{toupper(CustomStatusLineSetMode(mode()))} "
     let s:sl .= "%*"
+
     return s:sl
 endfunction
 
