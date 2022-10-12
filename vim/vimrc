@@ -211,13 +211,17 @@ function CustomStatusLine() abort
 
     " statusline for INACTIVE windows
     if g:statusline_winid != win_getid(winnr())
+        let s:sl .= "%3.3n " " works ok up to buffer 99!
         let s:sl .= " %f"
         return s:sl
     endif
 
     " Identify vim's internal help files
     if getbufvar("", "&buftype") == "help"
-        let s:sl .= "HELP: %f"
+        let s:sl .= "%#customStatusLineActiveHelp#"
+        let s:sl .= " HELP "
+        let s:sl .= "%*"
+        let s:sl .= " %f"
         return s:sl
     endif
 

@@ -143,6 +143,9 @@ call s:h("customStatusLineModeNormal", { "fg": s:colors.light_grey_dark, "bg": s
 call s:h("customStatusLineModeInsert", { "fg": s:colors.dark_grey_base, "bg": s:colors.yellow_base })
 call s:h("customStatusLineModeVisual", { "fg": s:colors.light_grey_light, "bg": s:colors.red_base })
 
+" TODO: might need adjustment
+call s:h("customStatusLineActiveHelp", { "fg": s:colors.dark_grey_base, "bg": s:colors.green_dark })
+
 " ===== Syntax Highlighting ===================================================
 
 call s:h("Comment", { "fg": s:colors.medium_grey_base })
