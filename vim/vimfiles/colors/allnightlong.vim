@@ -100,6 +100,7 @@ call s:h("CursorColumn", { "bg": s:colors.dark_grey_light })
 call s:h("ErrorMsg", { "fg": s:colors.light_grey_light, "bg": s:colors.red_base })
 
 " === Directory
+" E.g. in vim's :Explore, but also used by NerdTree plugin
 call s:h("Directory", { "fg": s:colors.blue_base })
 
 " === Search Results
@@ -144,8 +145,7 @@ call s:h("customStatusLineModeNormal", { "fg": s:colors.light_grey_dark, "bg": s
 call s:h("customStatusLineModeInsert", { "fg": s:colors.dark_grey_base, "bg": s:colors.yellow_base })
 call s:h("customStatusLineModeVisual", { "fg": s:colors.light_grey_light, "bg": s:colors.red_base })
 
-" TODO: might need adjustment
-call s:h("customStatusLineActiveHelp", { "fg": s:colors.dark_grey_base, "bg": s:colors.green_dark })
+call s:h("customStatusLineActiveHelp", { "fg": s:colors.dark_grey_base, "bg": s:colors.green_light })
 
 " ===== Syntax Highlighting ===================================================
 

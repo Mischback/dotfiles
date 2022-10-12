@@ -22,21 +22,16 @@ Plugin 'vim-scripts/delimitMate.vim'
 " File explorer
 Plugin 'scrooloose/nerdtree'
 
-" General integration of Git
-Plugin 'tpope/vim-fugitive'
-
 " Indicate changes in the file (only supporting Git)
 Plugin 'airblade/vim-gitgutter'
 
 " Show indentation guides
 Plugin 'nathanaelkane/vim-indent-guides'
 
-" Enhances status line
-" Plugin 'vim-airline/vim-airline'
-
 " Read and apply .editorconfig
 Plugin 'editorconfig/editorconfig-vim'
 
+" Improved Python syntax highlighting
 Plugin 'vim-python/python-syntax'
 
 " Colorschemes
@@ -107,9 +102,32 @@ augroup END
 
 
 " ===== custom functions ======================================================
+" Reference for vim's ``mode()``
+" DO NOT TOUCH the left hand side (the keys)!
+let g:modemap={
+    \ 'n'  : 'Normal',
+    \ 'no' : 'Normal·Operator Pending',
+    \ 'v'  : 'Visual',
+    \ 'V'  : 'V·Line',
+    \ '' : 'V·Block',
+    \ 's'  : 'Select',
+    \ 'S'  : 'S·Line',
+    \ '^S' : 'S·Block',
+    \ 'i'  : 'Insert',
+    \ 'R'  : 'Replace',
+    \ 'Rv' : 'V·Replace',
+    \ 'c'  : 'Command',
+    \ 'cv' : 'Vim Ex',
+    \ 'ce' : 'Ex',
+    \ 'r'  : 'Prompt',
+    \ 'rm' : 'More',
+    \ 'r?' : 'Confirm',
+    \ '!'  : 'Shell',
+    \ 't'  : 'Terminal'
+    \}
 
 " Return the highlight group and its effective link
-function! SynStack ()
+function! SynStack () abort
     if !exists("*synstack")
         return
     endif
@@ -138,34 +156,7 @@ endfunction
 " to another group, providing (dynamic) styling of the mode in the statusline.
 "
 " @param: currentMode (as provided by ``mode()`` function)
-function! CustomStatusLineSetMode(currentMode)
-    " Reference for vim's ``mode()``
-    " DO NOT TOUCH the left hand side (the keys)!
-    " TODO: Does it make sense to have this here, locally? Or should this be
-    "       provided in a *global* scope (assuming that it would not be
-    "       defined again and again).
-    "       See: https://stackoverflow.com/a/41764214
-    let l:modemap={
-        \ 'n'  : 'Normal',
-        \ 'no' : 'Normal·Operator Pending',
-        \ 'v'  : 'Visual',
-        \ 'V'  : 'V·Line',
-        \ '' : 'V·Block',
-        \ 's'  : 'Select',
-        \ 'S'  : 'S·Line',
-        \ '^S' : 'S·Block',
-        \ 'i'  : 'Insert',
-        \ 'R'  : 'Replace',
-        \ 'Rv' : 'V·Replace',
-        \ 'c'  : 'Command',
-        \ 'cv' : 'Vim Ex',
-        \ 'ce' : 'Ex',
-        \ 'r'  : 'Prompt',
-        \ 'rm' : 'More',
-        \ 'r?' : 'Confirm',
-        \ '!'  : 'Shell',
-        \ 't'  : 'Terminal'
-        \}
+function! CustomStatusLineSetMode(currentMode) abort
 
     " apply highlight group (this is a side-effect of this function and the
     " actual magic.
@@ -192,9 +183,9 @@ function! CustomStatusLineSetMode(currentMode)
     " FIXME: Should be determined automatically!
     " FIXME: Should be a global setting, as the value is reused!
     if winwidth(0) < 70
-        return l:modemap[a:currentMode][0]
+        return g:modemap[a:currentMode][0]
     endif
-    return l:modemap[a:currentMode]
+    return g:modemap[a:currentMode]
 endfunction
 
 
@@ -208,7 +199,7 @@ endfunction
 "
 " Great example: https://github.com/scrooloose/vimfiles/blob/master/vimrc
 " See: https://gist.github.com/meskarune/57b613907ebd1df67eb7bdb83c6e6641
-function CustomStatusLine() abort
+function! CustomStatusLine() abort
     let s:sl = ""
 
     " statusline for INACTIVE windows
@@ -262,7 +253,6 @@ function CustomStatusLine() abort
     " VIM mode
     " Uses the highlight group ``customStatusLineMode``, which is dynamically
     " linked in ``CustomStatusLineSetMode()``.
-    " FIXME: Do we really need to call another function?!
     let s:sl .= "%#customStatusLineMode#"
     let s:sl .= " %{toupper(CustomStatusLineSetMode(mode()))} "
     let s:sl .= "%*"
