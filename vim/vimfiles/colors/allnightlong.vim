@@ -118,10 +118,12 @@ call s:h("DiffDelete", { "fg": s:colors.dark_grey_base, "bg": s:colors.red_base 
 " ===== Plugin-specific Highlighting ==========================================
 
 " === NerdTree
-highlight link NerdTreeHelp Comment
-highlight link NerdTreeFile Ientifier
-highlight link NerdTreeExecFile String
 highlight link NerdTreeCWD Function
+highlight link NerdTreeDir Directory
+highlight link NerdTreeDirSlash Directory
+highlight link NerdTreeExecFile String
+highlight link NerdTreeFile Ientifier
+highlight link NerdTreeHelp Comment
 
 
 " ===== Syntax Highlighting ===================================================
