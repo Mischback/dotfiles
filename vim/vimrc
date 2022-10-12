@@ -20,7 +20,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-scripts/delimitMate.vim'
 
 " File explorer
-Plugin 'scrooloose/nerdtree'
+Plugin 'preservim/nerdtree'
 
 " Indicate changes in the file (only supporting Git)
 Plugin 'airblade/vim-gitgutter'
@@ -30,6 +30,9 @@ Plugin 'nathanaelkane/vim-indent-guides'
 
 " Automatically jump to last edit when (re) opening files
 Plugin 'farmergreg/vim-lastplace'
+
+" Provide easy key bindings to comment a line
+Plugin 'preservim/nerdcommenter'
 
 " Read and apply .editorconfig
 Plugin 'editorconfig/editorconfig-vim'
