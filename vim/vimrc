@@ -177,13 +177,13 @@ function! CustomStatusLineSetMode(currentMode)
     "       provided here.
     if (a:currentMode ==# 'i')
         " Insert mode
-        exe "highlight link customStatusLineMode Statement"
+        exe "highlight link customStatusLineMode customStatusLineModeInsert"
     elseif (a:currentMode ==# 'v' || a:currentMode ==# 'V' || a:currentMode ==# '^V')
         " Visual mode
-        exe "highlight link customStatusLineMode Character"
+        exe "highlight link customStatusLineMode customStatusLineModeVisual"
     else
         " Normal mode
-        exe "highlight link customStatusLineMode Function"
+        exe "highlight link customStatusLineMode customStatusLineModeNormal"
     endif
 
     " the actual return value is the *verbose* string
@@ -217,6 +217,7 @@ function CustomStatusLine() abort
     endif
 
     " This is the statusline for ACTIVE windows
+    let s:sl .= "%#customStatusLineBgActive#"
 
     " VIM mode
     " Uses the highlight group ``customStatusLineMode``, which is dynamically
@@ -232,7 +233,9 @@ function CustomStatusLine() abort
     "   - filename (relative to working directory; %f)
     "   - [optional] modified flag
     "   - [optional] read-only flag
+    let s:sl .= "%#customStatusLineActiveFileInfo#"
     let s:sl .= " %n: %f"
+    let s:sl .= "%*"
     let s:sl .= "%( %m%)"
     let s:sl .= "%( %r%)"
 
@@ -246,6 +249,7 @@ function CustomStatusLine() abort
     " filetype, encoding and line ending style
     let s:sl .= "%( [". &filetype .", ". &fileencoding .", ". &fileformat ."]%)"
 
+    let s:sl .= "%*"
     return s:sl
 endfunction
 

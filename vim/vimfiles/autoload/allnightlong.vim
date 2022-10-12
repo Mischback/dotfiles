@@ -13,10 +13,12 @@
 " TODO: Document all colors as constructed, even if they get removed!
 let s:colors = {
     \ "dark_grey_base": { "gui": "#1c1c1c", "cterm": "234", "cterm16": "0" },
+    \ "dark_grey_dark": { "gui": "#080808", "cterm": "232", "cterm16": "0" },
     \ "dark_grey_light": { "gui": "#3a3a3a", "cterm": "237", "cterm16": "0" },
     \ "medium_grey_base": { "gui": "#767676", "cterm": "243", "cterm16": "8" },
     \ "medium_grey_dark": { "gui": "#585858", "cterm": "240", "cterm16": "8" },
     \ "light_grey_base": { "gui": "#b2b2b2", "cterm": "249", "cterm16": "7" },
+    \ "light_grey_dark": { "gui": "#949494", "cterm": "246", "cterm16": "7" },
     \ "light_grey_light": { "gui": "#d0d0d0", "cterm": "252", "cterm16": "15" },
     \ "green_base": { "gui": "#87af00", "cterm": "106", "cterm16": "2" },
     \ "green_dark": { "gui": "#878700", "cterm": "100", "cterm16": "2" },

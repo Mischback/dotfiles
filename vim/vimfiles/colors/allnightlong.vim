@@ -125,6 +125,19 @@ highlight link NerdTreeExecFile String
 highlight link NerdTreeFile Ientifier
 highlight link NerdTreeHelp Comment
 
+" ===== highlight groups for my custom statusline implementation
+" (see ``vimrc``)
+call s:h("customStatusLineActive", { "fg": s:colors.dark_grey_base, "bg": s:colors.medium_grey_base })
+highlight! link StatusLine customStatusLineActive
+
+call s:h("customStatusLineInactive", { "fg": s:colors.dark_grey_dark, "bg": s:colors.dark_grey_light })
+highlight! link StatusLineNC customStatusLineInactive
+
+call s:h("customStatusLineActiveFileInfo", { "fg": s:colors.dark_grey_dark, "bg": s:colors.medium_grey_base })
+
+call s:h("customStatusLineModeNormal", { "fg": s:colors.light_grey_dark, "bg": s:colors.dark_grey_light })
+call s:h("customStatusLineModeInsert", { "fg": s:colors.dark_grey_base, "bg": s:colors.yellow_base })
+call s:h("customStatusLineModeVisual", { "fg": s:colors.light_grey_light, "bg": s:colors.red_base })
 
 " ===== Syntax Highlighting ===================================================
 
