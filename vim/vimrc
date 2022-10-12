@@ -187,9 +187,11 @@ function! CustomStatusLineSetMode(currentMode)
     endif
 
     " the actual return value is the *verbose* string;
-    " if the window width is smaller than 60 characters, only the first letter
+    " if the window width is smaller than 70 characters, only the first letter
     " of the mode is returned
-    if winwidth(0) < 60
+    " FIXME: Should be determined automatically!
+    " FIXME: Should be a global setting, as the value is reused!
+    if winwidth(0) < 70
         return l:modemap[a:currentMode][0]
     endif
     return l:modemap[a:currentMode]
@@ -250,8 +252,10 @@ function CustomStatusLine() abort
     " File Meta Information (nice to know)
     " filetype, encoding and line ending style
     " This information is only included if the the window has more than
-    " 60 characters of width
-    if winwidth(0) >= 60
+    " 70 characters of width
+    " FIXME: Should be determined automatically!
+    " FIXME: Should be a global setting, as the value is reused!
+    if winwidth(0) >= 70
         let s:sl .= "%( [". &filetype .", ". &fileencoding .", ". &fileformat ."]%)"
     endif
 

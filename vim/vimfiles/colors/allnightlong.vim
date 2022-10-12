@@ -74,6 +74,7 @@ call s:h("SignColumn", {})
 call s:h("FoldColumn", {})
 " TODO: Probably this needs a color adjustment
 call s:h("Folded", { "fg": s:colors.yellow_light })
+call s:h("ColorColumn", { "bg": s:colors.yellow_base })
 
 " === Vertical Split
 " While the window is splitted vertically, a column is used as seperator.
