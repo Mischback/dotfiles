@@ -236,8 +236,8 @@ function CustomStatusLine() abort
     let s:sl .= "%#customStatusLineActiveFileInfo#"
     let s:sl .= " %n: %f"
     let s:sl .= "%*"
-    let s:sl .= "%( %m%)"
-    let s:sl .= "%( %r%)"
+    let s:sl .= "%( %#customStatusLineActiveFileInfoMod#%m%*%)"
+    let s:sl .= "%( %#customStatusLineActiveFileInfoRO#%r%*%)"
 
     " Left/Right seperator
     let s:sl .= "%="
