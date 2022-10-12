@@ -203,31 +203,30 @@ endfunction
 function CustomStatusLine() abort
     let s:sl = ""
 
-    " statusline for ACTIVE windows
-    if g:statusline_winid == win_getid(winnr())
-
-        " VIM mode
-        " Uses the highlight group ``customStatusLineMode``, which is 
-        " dynamically linked in ``CustomStatusLineSetMode()``.
-        " FIXME: Do we really need to call another function?!
-        let s:sl .= "%#customStatusLineMode#"
-        let s:sl .= " %{toupper(CustomStatusLineSetMode(mode()))} "
-        let s:sl .= "%*"
-
-        " File information
+    " statusline for INACTIVE windows
+    if g:statusline_winid != win_getid(winnr())
         let s:sl .= " %f"
-
-        " Left/Right seperator
-        let s:sl .= "%="
-
-        " Cursor Position
-        let s:sl .= " %2.5l:%-3.3v"
-
         return s:sl
     endif
 
-    " This is the statusline for INACTIVE windows
+    " This is the statusline for ACTIVE windows
+
+    " VIM mode
+    " Uses the highlight group ``customStatusLineMode``, which is dynamically
+    " linked in ``CustomStatusLineSetMode()``.
+    " FIXME: Do we really need to call another function?!
+    let s:sl .= "%#customStatusLineMode#"
+    let s:sl .= " %{toupper(CustomStatusLineSetMode(mode()))} "
+    let s:sl .= "%*"
+
+    " File information
     let s:sl .= " %f"
+
+    " Left/Right seperator
+    let s:sl .= "%="
+
+    " Cursor Position
+    let s:sl .= " %2.5l:%-3.3v"
 
     return s:sl
 endfunction
