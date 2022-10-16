@@ -320,7 +320,7 @@ set statusline=%!CustomStatusLine()
 
 " ===== keys ==================================================================
 
-let mapleader = ","  " use , as the leader key
+let mapleader = "ö"  " use , as the leader key
 
 " Provide mappings for buffer management (only available in NORMAL mode)
 nnoremap <Leader>b :buffers<CR>:buffer<Space>
