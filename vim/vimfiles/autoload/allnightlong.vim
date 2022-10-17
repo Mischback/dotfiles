@@ -35,6 +35,7 @@ let s:colors = {
     \ "red_base": { "gui": "#af0000", "cterm": "124", "cterm16": "1" },
     \ "orange_base": { "gui": "#ff8700", "cterm": "208", "cterm16": "2" },
     \ "orange_dark": { "gui": "#ff5f00", "cterm": "202", "cterm16": "2" },
+    \ "orange_light": { "gui": "#ffaf00", "cterm": "214", "cterm16": "2" },
     \ "yellow_base": { "gui": "#ffd700", "cterm": "220", "cterm16": "11" },
     \ "yellow_light": { "gui": "#ffff87", "cterm": "228", "cterm16": "11" },
     \ "work_pink": { "gui": "#ff00ff", "cterm": "201", "cterm16": "13" },

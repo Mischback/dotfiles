@@ -195,13 +195,36 @@ highlight! link cFormat Character
 " FIXME: doesn't seem to work!
 highlight! link cParen Delimiter
 
+" === CSS
+" FIXME: As of now, this is only done by looking at an inline style of an HTML
+"        document. Might need refinement while working with CSS/SCSS files.
+highlight! link cssUnitDecorators Identifier
+highlight! link cssColor Character
+call s:h("anlCssAttributeName", { "fg": s:colors.purple_light })
+highlight! link cssBackgroundProp anlCssAttributeName
+highlight! link cssBoxProp anlCssAttributeName
+highlight! link cssTextProp anlCssAttributeName
+highlight! link cssBorderProp anlCssAttributeName
+highlight! link cssPositioningProp anlCssAttributeName
+highlight! link cssFontProp anlCssAttributeName
+highlight! link cssTableProp anlCssAttributeName
+highlight! link cssPseudoclassId Function
+highlight! link cssIdentifier StorageClass
+highlight! link cssClassName cssIdentifier
+
 " === HTML
+call s:h("htmlH1", { "fg": s:colors.orange_base })
+call s:h("htmlH3", { "fg": s:colors.orange_light })
 highlight! link htmlTag Delimiter
 highlight! link htmlEndTag htmlTag
-highlight! link htmlArg Function
+highlight! link htmlTagName Type
+highlight! link htmlSpecialTagName Special
+highlight! link htmlArg Statement
 
 " Django template-specific
-highlight! link djangoStatement Type
+highlight! link djangoTagBlock Define
+highlight! link djangoStatement PreProc
+call s:h("djangoArgument", { "fg": s:colors.orange_light })
 
 " === Python (this assumes vim-python/python-syntax plugin)
 highlight! link pythonClass Function
