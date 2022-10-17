@@ -153,6 +153,8 @@ call s:h("customStatusLineActiveHelp", { "fg": s:colors.dark_grey_base, "bg": s:
 call s:h("Comment", { "fg": s:colors.medium_grey_base })
 
 call s:h("Constant", { "fg": s:colors.green_base })
+" FIXME: This uses *teal* in another context...
+call s:h("Character", { "fg": s:colors.teal_base })
 call s:h("Number", { "fg": s:colors.orange_base })
 highlight link Boolean Number
 
@@ -167,5 +169,25 @@ call s:h("Special", { "fg": s:colors.medium_grey_base })
 
 call s:h("Ignore", { "fg": s:colors.medium_grey_base })
 call s:h("Error", { "fg": s:colors.light_grey_light, "bg": s:colors.red_base })
-" TODO: The inverted style is good, the color might need adjustment
+" FIXME: The inverted style is good, the color needs adjustment!
+"        The current color collides with the color for ``Function`` keywords.
 call s:h("Todo", { "fg": s:colors.dark_grey_base, "bg": s:colors.orange_dark })
+
+
+" ===== Custom Syntax Highlighting (language-specific)
+
+" === C (possibly C++)
+highlight! link cFormat Character
+
+" === HTML
+highlight! link htmlTag Special
+highlight! link htmlEndTag htmlTag
+highlight! link htmlArg Function
+
+" Django template-specific
+highlight! link djangoStatement Type
+
+" === Python (this assumes vim-python/python-syntax plugin)
+highlight! link pythonClass Function
+highlight! link pythonNone pythonBuiltinType
+highlight! link pythonStrFormatting Character

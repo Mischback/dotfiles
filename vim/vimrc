@@ -299,6 +299,9 @@ endfunction
 
 " ====== plugin settings ======================================================
 
+" vim-python/python-syntax
+let g:python_highlight_all = 1
+
 " indent-guides
 " FIXME: Set the required highlight groups in allnightlong.vim
 let g:indent_guides_start_level=2
