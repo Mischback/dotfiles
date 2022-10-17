@@ -149,38 +149,54 @@ call s:h("customStatusLineActiveHelp", { "fg": s:colors.dark_grey_base, "bg": s:
 
 
 " ===== Syntax Highlighting ===================================================
+" See ``h w18`` for reference
 
 call s:h("Comment", { "fg": s:colors.medium_grey_base })
 
-call s:h("Constant", { "fg": s:colors.green_base })
-" FIXME: This uses *teal* in another context...
-call s:h("Character", { "fg": s:colors.teal_base })
+call s:h("Constant", { "fg": s:colors.orange_dark })
+call s:h("String", { "fg": s:colors.green_base })
+call s:h("Character", { "fg": s:colors.green_light })
 call s:h("Number", { "fg": s:colors.orange_base })
+" TODO: ``Boolean`` is treated like a ``Number``. Needs evaluation during coding
 highlight link Boolean Number
 
 call s:h("Identifier", { "fg": s:colors.light_grey_base })
 call s:h("Function", { "fg": s:colors.orange_dark })
 
+" FIXME: blue_light still a bit off.
 call s:h("Statement", { "fg": s:colors.blue_base })
 
 call s:h("PreProc", { "fg": s:colors.purple_base })
+call s:h("Define", { "fg": s:colors.purple_light })
+highlight! link Macro Define
+" TODO: This is *really* dark, but selection is limited in 256 color mode
+call s:h("PreCondit", { "fg": s:colors.purple_dark })
+
 call s:h("Type", { "fg": s:colors.teal_base })
-call s:h("Special", { "fg": s:colors.medium_grey_base })
+call s:h("StorageClass", { "fg": s:colors.blue_light })
+
+call s:h("Special", { "fg": s:colors.orange_dark })
+call s:h("Tag", { "fg": s:colors.medium_grey_light })
+call s:h("Delimiter", { "fg": s:colors.medium_grey_light })
+highlight! link SpecialComment Comment
 
 call s:h("Ignore", { "fg": s:colors.medium_grey_base })
 call s:h("Error", { "fg": s:colors.light_grey_light, "bg": s:colors.red_base })
 " FIXME: The inverted style is good, the color needs adjustment!
 "        The current color collides with the color for ``Function`` keywords.
-call s:h("Todo", { "fg": s:colors.dark_grey_base, "bg": s:colors.orange_dark })
+call s:h("Todo", { "fg": s:colors.dark_grey_base, "bg": s:colors.yellow_base })
 
 
 " ===== Custom Syntax Highlighting (language-specific)
 
 " === C (possibly C++)
+highlight! link cDefine Define
 highlight! link cFormat Character
+" FIXME: doesn't seem to work!
+highlight! link cParen Delimiter
 
 " === HTML
-highlight! link htmlTag Special
+highlight! link htmlTag Delimiter
 highlight! link htmlEndTag htmlTag
 highlight! link htmlArg Function
 
@@ -189,5 +205,7 @@ highlight! link djangoStatement Type
 
 " === Python (this assumes vim-python/python-syntax plugin)
 highlight! link pythonClass Function
+call s:h("pythonFunctionCall", { "fg": s:colors.blue_light })
 highlight! link pythonNone pythonBuiltinType
+highlight! link pythonStatement Conditional
 highlight! link pythonStrFormatting Character
