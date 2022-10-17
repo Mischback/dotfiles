@@ -190,45 +190,43 @@ call s:h("Todo", { "fg": s:colors.dark_grey_base, "bg": s:colors.yellow_base })
 " ===== Custom Syntax Highlighting (language-specific)
 
 " === C (possibly C++)
-highlight! link cDefine Define
-highlight! link cFormat Character
+highlight link cDefine Define
+highlight link cFormat Character
 " FIXME: doesn't seem to work!
-highlight! link cParen Delimiter
+highlight link cParen Delimiter
 
 " === CSS
-" FIXME: As of now, this is only done by looking at an inline style of an HTML
-"        document. Might need refinement while working with CSS/SCSS files.
-highlight! link cssUnitDecorators Identifier
-highlight! link cssColor Character
-call s:h("anlCssAttributeName", { "fg": s:colors.purple_light })
-highlight! link cssBackgroundProp anlCssAttributeName
-highlight! link cssBoxProp anlCssAttributeName
-highlight! link cssTextProp anlCssAttributeName
-highlight! link cssBorderProp anlCssAttributeName
-highlight! link cssPositioningProp anlCssAttributeName
-highlight! link cssFontProp anlCssAttributeName
-highlight! link cssTableProp anlCssAttributeName
-highlight! link cssPseudoclassId Function
-highlight! link cssIdentifier StorageClass
-highlight! link cssClassName cssIdentifier
+highlight link cssBraces Delimiter
+highlight link cssClassName Type
+highlight link cssClassNameDot cssClassName
+highlight link cssIdentifier cssClassName
+highlight link cssProp Define
+highlight link cssAttr Statement
+highlight link cssImportant Function
+highlight link cssFunctionName Statement
+highlight link cssVendor StorageClass
+highlight link cssColor Function
+highlight link cssUnitDecorators Delimiter
+highlight link cssNoise Delimiter
+call s:h("cssTagName", { "fg": s:colors.teal_light })
 
 " === HTML
 call s:h("htmlH1", { "fg": s:colors.orange_base })
 call s:h("htmlH3", { "fg": s:colors.orange_light })
-highlight! link htmlTag Delimiter
-highlight! link htmlEndTag htmlTag
-highlight! link htmlTagName Type
-highlight! link htmlSpecialTagName Special
-highlight! link htmlArg Statement
+highlight link htmlTag Delimiter
+highlight link htmlEndTag htmlTag
+highlight link htmlTagName Type
+highlight link htmlSpecialTagName Special
+highlight link htmlArg Statement
 
 " Django template-specific
-highlight! link djangoTagBlock Define
-highlight! link djangoStatement PreProc
+highlight link djangoTagBlock Define
+highlight link djangoStatement PreProc
 call s:h("djangoArgument", { "fg": s:colors.orange_light })
 
 " === Python (this assumes vim-python/python-syntax plugin)
-highlight! link pythonClass Function
+highlight link pythonClass Function
 call s:h("pythonFunctionCall", { "fg": s:colors.blue_light })
-highlight! link pythonNone pythonBuiltinType
-highlight! link pythonStatement Conditional
-highlight! link pythonStrFormatting Character
+highlight link pythonNone pythonBuiltinType
+highlight link pythonStatement Conditional
+highlight link pythonStrFormatting Character
