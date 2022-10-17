@@ -213,6 +213,7 @@ call s:h("cssTagName", { "fg": s:colors.teal_light })
 " === HTML
 call s:h("htmlH1", { "fg": s:colors.orange_base })
 call s:h("htmlH3", { "fg": s:colors.orange_light })
+highlight link htmlTitle htmlH1
 highlight link htmlTag Delimiter
 highlight link htmlEndTag htmlTag
 highlight link htmlTagName Type
