@@ -230,3 +230,9 @@ call s:h("pythonFunctionCall", { "fg": s:colors.blue_light })
 highlight link pythonNone pythonBuiltinType
 highlight link pythonStatement Conditional
 highlight link pythonStrFormatting Character
+
+" === VIM script
+
+call s:h("vimCommentTitle", { "fg": s:colors.yellow_base })
+call s:h("vimUserFunc", { "fg": s:colors.blue_light })
+highlight link vimUsrCmd Character
