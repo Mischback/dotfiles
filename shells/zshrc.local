@@ -1,6 +1,7 @@
 alias gitba='git branch -a'
 alias gitf='git fetch --prune'
 alias gitk='git k'
-alias gits='git status'
+alias gitl='git l'
+alias gits='git s'
 alias todo='git grep --line-number --column --ignore-case --full-name -e "TODO" -e "FIXME" -I'
 alias tree='tree -I ".git|.tox"'
