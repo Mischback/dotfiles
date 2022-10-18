@@ -34,7 +34,7 @@ linkDotFile ".zshrc" "shells/zshrc"
 linkDotFile ".zshrc.local" "shells/zshrc.local"
 
 # setup Vim
-if [ ! -d "$dotfilesDir/vim/vimfiles/bundle/Vundle.vim" ]; then
+if [ ! -d "$dotfilesDir/vim/vimfiles/bundle/Vundle.vim/autoload" ]; then
     echo "Fetching Vundle!"
     git submodule update --init
 fi
