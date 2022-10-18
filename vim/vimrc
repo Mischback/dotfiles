@@ -51,6 +51,8 @@ call vundle#end()
 
 " ===== general configuration =================================================
 
+filetype on         " (re-) enable filetype detection
+filetype plugin on  " load filetype specific plugins
 syntax on           " enable syntax hightlighting
 set number          " enable line numbers
 set ignorecase      " ignore case while searching
