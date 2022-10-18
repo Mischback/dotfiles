@@ -319,6 +319,17 @@ set laststatus=2    " make the statusline actually visible
 set noshowmode      " don't show the mode, as it is included in the statusline
 set statusline=%!CustomStatusLine()
 
+" Apply the highlight groups
+highlight! link StatusLine User1
+highlight! link StatusLineNC User2
+highlight! link customStatusLineActiveFileInfo User3
+highlight! link customStatusLineActiveFileInfoRO User4
+highlight! link customStatusLineActiveFileInfoMod User5
+highlight! link customStatusLineModeNormal User6
+highlight! link customStatusLineModeInsert User7
+highlight! link customStatusLineModeVisual User8
+highlight! link customStatusLineActiveHelp User9
+
 
 " ===== keys ==================================================================
 

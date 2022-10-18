@@ -130,31 +130,16 @@ highlight link NerdTreeHelp Comment
 " ===== highlight groups for my custom statusline implementation
 " (see ``vimrc``)
 call s:h("User1", { "fg": s:colors.dark_grey_base, "bg": s:colors.medium_grey_light })
-highlight! link StatusLine customStatusLineActive
-
 call s:h("User2", { "fg": s:colors.dark_grey_base, "bg": s:colors.dark_grey_light })
-highlight! link StatusLineNC customStatusLineInactive
-
 call s:h("User3", { "fg": s:colors.dark_grey_dark, "bg": s:colors.medium_grey_light })
-highlight! link customStatusLineActiveFileInfo User3
-
 call s:h("User4", { "fg": s:colors.red_base, "bg": s:colors.medium_grey_light })
-highlight! link customStatusLineActiveFileInfoRO User4
-
 call s:h("User5", { "fg": s:colors.teal_dark, "bg": s:colors.medium_grey_light })
-highlight! link customStatusLineActiveFileInfoMod User5
-
 call s:h("User6", { "fg": s:colors.light_grey_dark, "bg": s:colors.dark_grey_light })
-highlight! link customStatusLineModeNormal User6
 call s:h("User7", { "fg": s:colors.dark_grey_base, "bg": s:colors.yellow_base })
 " call s:h("User7", { "fg": s:colors.yellow_base, "bg": s:colors.dark_grey_light })
-highlight! link customStatusLineModeInsert User7
 call s:h("User8", { "fg": s:colors.light_grey_light, "bg": s:colors.red_base })
 " call s:h("User8", { "fg": s:colors.red_base, "bg": s:colors.dark_grey_light })
-highlight! link customStatusLineModeVisual User8
-
 call s:h("User9", { "fg": s:colors.dark_grey_base, "bg": s:colors.green_light })
-highlight! link customStatusLineActiveHelp User9
 
 
 " ===== Syntax Highlighting ===================================================
