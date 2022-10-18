@@ -11,7 +11,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
-" ===== Vundle Plugins ====================================
+" ===== Vundle Plugins ========================================================
 
 " Manage Vundle with Vundle
 Plugin 'gmarik/Vundle.vim'
@@ -20,10 +20,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-scripts/delimitMate.vim'
 
 " File explorer
-Plugin 'scrooloose/nerdtree'
-
-" General integration of Git
-Plugin 'tpope/vim-fugitive'
+Plugin 'preservim/nerdtree'
 
 " Indicate changes in the file (only supporting Git)
 Plugin 'airblade/vim-gitgutter'
@@ -31,34 +28,28 @@ Plugin 'airblade/vim-gitgutter'
 " Show indentation guides
 Plugin 'nathanaelkane/vim-indent-guides'
 
-" Enhances status line
-Plugin 'vim-airline/vim-airline'
+" Automatically jump to last edit when (re) opening files
+Plugin 'farmergreg/vim-lastplace'
+
+" Provide easy key bindings to comment a line
+Plugin 'preservim/nerdcommenter'
 
 " Read and apply .editorconfig
 Plugin 'editorconfig/editorconfig-vim'
 
+" Improved Python syntax highlighting
+Plugin 'vim-python/python-syntax'
+
 " Colorschemes
-
-" looks really nice, evaluate in 256
-"
-" - Colors seem a little too tuned down
-" - the primary color (white-ish) is a little to hard in contrast to the backround
-" - Python and Typescript looking good
-" - I don't really like the colors...
-Plugin 'danilo-augusto/vim-afterglow'
-
-" evaluate for 256, might need color adjustments; some nice features
-"
-" - low contrast between primary color and (linewise) comments
-" - looking good on Python and TypeScript
-" - colors hardcoded, without palette abstraction
+" FIXME: These are primarily for reference while developing a custom theme.
 Plugin 'pasela/edark.vim'
+Plugin 'joshdick/onedark.vim'
+Plugin 'NLKNguyen/papercolor-theme'
 
 call vundle#end()
-" =========================================================
 
 
-" ===== general configuration =============================
+" ===== general configuration =================================================
 
 syntax on           " enable syntax hightlighting
 set number          " enable line numbers
@@ -69,50 +60,281 @@ set noautowrite     " thanks, no automatic writing
 set noautowriteall
 set confirm
 set noautoread      " and surely no automatic reading
+set updatetime=500  " make automatic updates faster (default: 4000)
 set nobackup        " deactivate auto-backup
 set nowb
 set noswapfile      " get rid of this nasty swap files
+set hidden          " hide buffers when not displayed
+" set cmdheight=0     " do not show the command line (requires vim > 9.0)
 
 set t_Co=256        " set colorspace to 256
 set background=dark " manually override the background
-colorscheme edark  " actually apply the colorscheme
-" =========================================================
+colorscheme allnightlong  " actually apply the colorscheme
 
 
-" ===== editing ===========================================
+" ===== editing ===============================================================
 
 set nowrap          " don't wrap lines
 set linebreak       " and surely don't wrap text in the middle of a word
+set autoindent      " try to be smart about indentation
+set smartindent     " I mean, like, really smart
 set expandtab       " use spaces instead of tabs
 set tabstop=4       " <tab> produces 4 spaces
 set shiftwidth=4
+set backspace=indent,eol,start " fix backspacing
 set scrolloff=3     " let some lines...
-set sidescroll=10   " ... and characters be visible while scrolling
-" =========================================================
+set sidescroll=1   " ... and characters be visible while scrolling
+set sidescrolloff=7
+set cursorline      " highlight the current line
+set cursorlineopt=number,screenline
+set hlsearch        " highlight search results
+set incsearch       " highlight while still typing
+
+" EXPERIMENTAL
+set list
+" TODO: Set color for SpecialKey (see :h listchars)
+set listchars=tab:<->,trail:-
+
+" ``colorcolumn`` let you set visual markers for the line length.
+" As this is only relevant while editing, the setting is not applied directly.
+" Instead, it is only shown in ``INSERT`` mode.
+" Use the ``autocmd`` line including ``InsertEnter`` as usual.
+" See https://codeyarns.com/tech/2013-02-07-how-to-show-colorcolumn-only-in-insert-mode-of-vim.html
+augroup ColorColumnInsertMode
+    autocmd!
+    autocmd InsertEnter * setlocal colorcolumn=80
+    autocmd InsertLeave * setlocal colorcolumn=0
+augroup END
 
 
-" ====== plugin settings ==================================
+" ===== custom functions ======================================================
+" Reference for vim's ``mode()``
+" DO NOT TOUCH the left hand side (the keys)!
+let g:modemap={
+    \ 'n'  : 'Normal',
+    \ 'no' : 'Normal·Operator Pending',
+    \ 'v'  : 'Visual',
+    \ 'V'  : 'V·Line',
+    \ '' : 'V·Block',
+    \ 's'  : 'Select',
+    \ 'S'  : 'S·Line',
+    \ '^S' : 'S·Block',
+    \ 'i'  : 'Insert',
+    \ 'R'  : 'Replace',
+    \ 'Rv' : 'V·Replace',
+    \ 'c'  : 'Command',
+    \ 'cv' : 'Vim Ex',
+    \ 'ce' : 'Ex',
+    \ 'r'  : 'Prompt',
+    \ 'rm' : 'More',
+    \ 'r?' : 'Confirm',
+    \ '!'  : 'Shell',
+    \ 't'  : 'Terminal'
+    \}
+
+" Return the highlight group and its effective link
+function! SynStack () abort
+    if !exists("*synstack")
+        return
+    endif
+
+    " get the current line and column under cursor
+    let l:cur_line = line(".")
+    let l:cur_col = col(".")
+
+    " get the current stack of highlight groups
+    let l:stack = map(synstack(l:cur_line, l:cur_col), "synIDattr(v:val, 'name')")
+
+    " get the effective highlight group for styling
+    let l:eff_grp_id = synIDtrans(synID(l:cur_line, l:cur_col, 1))
+    let l:eff_grp_str = synIDattr(l:eff_grp_id, "name")
+
+    " print the results
+    echo l:stack
+    echon " --> "
+    echon l:eff_grp_str
+endfunction
+
+
+" Return a verbose name for vim's modes.
+"
+" The function has a side-effect: it dynamically links a custom highlight group
+" to another group, providing (dynamic) styling of the mode in the statusline.
+"
+" @param: currentMode (as provided by ``mode()`` function)
+function! CustomStatusLineSetMode(currentMode) abort
+
+    " apply highlight group (this is a side-effect of this function and the
+    " actual magic.
+
+    " FIXME: link to actual highlight groups
+    " TODO: Obviously these may be provided in our custom colorscheme (and this
+    "       would be the right place *imho*), but other users may use my
+    "       statusline setup without using the colorscheme. A fallback must be
+    "       provided here.
+    if (a:currentMode ==# 'i')
+        " Insert mode
+        exe "highlight link customStatusLineMode customStatusLineModeInsert"
+    elseif (a:currentMode ==# 'v' || a:currentMode ==# 'V' || a:currentMode ==# '^V')
+        " Visual mode
+        exe "highlight link customStatusLineMode customStatusLineModeVisual"
+    else
+        " Normal mode
+        exe "highlight link customStatusLineMode customStatusLineModeNormal"
+    endif
+
+    " the actual return value is the *verbose* string;
+    " if the window width is smaller than 70 characters, only the first letter
+    " of the mode is returned
+    " FIXME: Should be determined automatically!
+    " FIXME: Should be a global setting, as the value is reused!
+    if winwidth(0) < 70
+        return g:modemap[a:currentMode][0]
+    endif
+    return g:modemap[a:currentMode]
+endfunction
+
+
+" Show the count of current search matches in the status line.
+"
+" The output can/will be deactivated, if the search highlight is cleared with
+" ``nohls``.
+" See: https://groups.google.com/g/vim_dev/c/XzvOP1J--YE/m/3Z0Fylg2BQAJ
+function! CustomStatusLineMatchCount() abort
+    if !v:hlsearch
+        return ""
+    endif
+
+    try
+        let s:count = searchcount({"maxcount": 0, "timeout": 50})
+    catch /^Vim\%((\a\+)\)\=:\%(E486\)\@!/
+        return "[?/??]"
+    endtry
+
+    if empty(s:count)
+        return ""
+    endif
+
+    return s:count.total
+            \ ? s:count.incomplete
+                \  ? printf("[%d/??]", s:count.current)
+                \  : printf("[%d/%d]", s:count.current, s:count.total)
+            \ : "[0/0]"
+endfunction
+
+
+" Return the actual statusline string, depending on the window's status.
+"
+" Main purpose of this function is the provision of different statuslines for
+" active and inactive windows.
+"
+" Inside these logical blocks, *normal* and *usual* statusline syntax is
+" applied.
+"
+" Great example: https://github.com/scrooloose/vimfiles/blob/master/vimrc
+" See: https://gist.github.com/meskarune/57b613907ebd1df67eb7bdb83c6e6641
+function! CustomStatusLine() abort
+    let s:sl = ""
+
+    " statusline for INACTIVE windows
+    if g:statusline_winid != win_getid(winnr())
+        let s:sl .= "%3.3n " " works ok up to buffer 99!
+        let s:sl .= " %f"
+        return s:sl
+    endif
+
+    " Identify vim's internal help files
+    if getbufvar("", "&buftype") == "help"
+        let s:sl .= "%#customStatusLineActiveHelp#"
+        let s:sl .= " HELP "
+        let s:sl .= "%*"
+        let s:sl .= " %f"
+        return s:sl
+    endif
+
+    " This is the statusline for ACTIVE windows
+
+    " File information
+    " Includes:
+    "   - filename (relative to working directory; %f)
+    "   - [optional] modified flag
+    "   - [optional] read-only flag
+    let s:sl .= "%#customStatusLineMode#"
+    let s:sl .= "%3.3n " " works ok up to buffer 99!
+    let s:sl .= "%*"
+    let s:sl .= "%#customStatusLineActiveFileInfo#"
+    let s:sl .= " %f"
+    let s:sl .= "%*"
+    let s:sl .= "%( %#customStatusLineActiveFileInfoMod#%m%*%)"
+    let s:sl .= "%( %#customStatusLineActiveFileInfoRO#%r%*%)"
+
+    " Left/Right seperator
+    let s:sl .= "%="
+
+    let s:sl .= "%{CustomStatusLineMatchCount()}"
+
+    " Cursor Position
+    let s:sl .= " %2.5l:%-3.3v"
+
+    " File Meta Information (nice to know)
+    " filetype, encoding and line ending style
+    " This information is only included if the the window has more than
+    " 70 characters of width
+    " FIXME: Should be determined automatically!
+    " FIXME: Should be a global setting, as the value is reused!
+    if winwidth(0) >= 70
+        let s:sl .= "%( [". &filetype .", ". &fileencoding .", ". &fileformat ."]%)"
+    endif
+
+    " VIM mode
+    " Uses the highlight group ``customStatusLineMode``, which is dynamically
+    " linked in ``CustomStatusLineSetMode()``.
+    let s:sl .= "%#customStatusLineMode#"
+    let s:sl .= " %{toupper(CustomStatusLineSetMode(mode()))} "
+    let s:sl .= "%*"
+
+    return s:sl
+endfunction
+
+
+" ====== plugin settings ======================================================
+
+" vim-python/python-syntax
+let g:python_highlight_all = 1
 
 " indent-guides
+" FIXME: Set the required highlight groups in allnightlong.vim
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
 
-" GitGutter (color adjustments)
-highlight! link SignColumn LineNr
-highlight GitGutterAdd    guifg=#009900 ctermfg=2
-highlight GitGutterChange guifg=#bbbb00 ctermfg=3
-highlight GitGutterDelete guifg=#ff2222 ctermfg=1
-" =========================================================
+
+" ===== Status Line ===========================================================
+" There are several notable status line plugins, e.g. ``vim-airline``, that do
+" provide customizable interfaces to modify the statusline, including the
+" integration of several plugins.
+" However, they are quite heavy and provide lots of functionality that is not
+" required for my personal workflow. So, back to basic.
+" The actual magic happens in ``CustomStatusLine()``.
+
+set laststatus=2    " make the statusline actually visible
+set noshowmode      " don't show the mode, as it is included in the statusline
+set statusline=%!CustomStatusLine()
 
 
-" ===== keys ==============================================
+" ===== keys ==================================================================
 
-let mapleader = ","  " use , as the leader key
+let mapleader = "ö"  " use , as the leader key
 
 " Provide mappings for buffer management (only available in NORMAL mode)
 nnoremap <Leader>b :buffers<CR>:buffer<Space>
 nnoremap <Leader>v :bprev<CR>
 nnoremap <Leader>n :bnext<CR>
+
+" Clear search result highlighting
+nnoremap <Leader>c :nohls<CR>
+
+" Provide a mapping for the custom SynStack function
+nnoremap <Leader>h :call SynStack()<CR>
 
 " Mapping for indent-guides plugin
 nnoremap <Leader>g :IndentGuidesToggle<CR>
@@ -120,4 +342,3 @@ nnoremap <Leader>g :IndentGuidesToggle<CR>
 command! W :w       " let me save with 'W'
 
 map <F2> :NERDTreeToggle<CR>
-" =========================================================
