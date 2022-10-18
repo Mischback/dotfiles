@@ -1,16 +1,14 @@
+[user]
+    name = Mischback
+    email = dev@mischback.de
+
 [core]
-	editor = vim
+    editor = vim
+    excludesFile = ~/.gitignore
     autocrlf = input
 
-[user]
-	name = Mischback
-	email = dev@mischback.de
-
-[merge]
-    ff = false
-
 [color]
-	ui = true
+    ui = auto
 
 [color "status"]
     added = "green normal bold"
@@ -24,13 +22,36 @@
     remote = "cyan normal dim"
 
 [color "grep"]
-    linenumber = "green normal dim"
     filename = "magenta normal dim"
+    linenumber = "green normal dim"
     match = "red normal bold"
 
+[diff]
+    mnemonicPrefix = true
+    renames = true
+
+[fetch]
+    prune = true
+
+[grep]
+    break = true
+    heading = true
+    lineNumber = true
+
+[merge]
+    ff = false
+
+[push]
+    followTags = true
+
+[status]
+    showUntrackedFiles = all
+
 [alias]
-s = status
-m = merge
-ca = commit -a
-lg = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-k = log --oneline --graph --decorate --all
+    aliases = "!git config --get-regexp alias | sed -re 's/alias\\.(\\S*)\\s(.*)$/\\1 = \\2/g'"
+    ca = "commit -a"
+    k = "log --oneline --graph --decorate --all"
+    l = "log -25 --oneline --graph --decorate --all"
+    pull = "pull --ff-only"
+    s = "status"
+    uncommit = "reset --soft HEAD~1"
